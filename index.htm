@@ -1,506 +1,806 @@
-<!doctype html>
-<html lang="en" dir="ltr">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Magna Pacific · Finance Dashboard</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Playa Hermosa Estates | Trade Portal</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Villa Elu &amp; Villa Nalani, Playa Hermosa, Costa Rica. Rates, policies and enquiries for travel trade partners.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700&family=Rubik:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    color-scheme: light;
-    --bg:#FAF7F0;
-    --surface:#FFFFFF;
-    --surface-2:#F3EDDF;
-    --surface-3:#EAE0C9;
-    --border:#E2D8BF;
-    --border-strong:#CBBD98;
-    --ink:#1C2624;
-    --ink-2:#54625B;
-    --ink-muted:#8A968D;
-    --biz:#0E6B5C;
-    --biz-strong:#0A4F45;
-    --biz-soft:#E3EFE9;
-    --per:#AD5A28;
-    --per-strong:#87441D;
-    --per-soft:#F3E7DA;
-    --gold:#A67F2A;
-    --good:#1E8E4F;
-    --warn:#B8790E;
-    --crit:#C23B3B;
-    --shadow: 0 1px 2px rgba(28,38,36,0.06), 0 8px 24px -12px rgba(28,38,36,0.18);
-    --c1:#2a78d6; --c2:#eb6834; --c3:#1baf7a; --c4:#eda100;
-    --c5:#e87ba4; --c6:#008300; --c7:#4a3aa7; --c8:#e34948;
-    --font-display:'Frank Ruhl Libre', 'David Libre', serif;
-    --font-body:'Rubik', 'Segoe UI', system-ui, sans-serif;
+    --bg:#FAF6EE;
+    --ink:#26291F;
+    --muted:#6B6553;
+    --accent:#AD8A4E;
+    --line:rgba(38,41,31,.13);
+    --line-strong:rgba(38,41,31,.3);
+    --cream:#FAF6EE;
   }
-  @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]){
-      color-scheme: dark;
-      --bg:#101614;
-      --surface:#171F1C;
-      --surface-2:#1D2622;
-      --surface-3:#26312B;
-      --border:#2C3A33;
-      --border-strong:#3B4B42;
-      --ink:#EDEFE9;
-      --ink-2:#B3BFB6;
-      --ink-muted:#7C8D83;
-      --biz:#3FA98A;
-      --biz-strong:#5BC4A4;
-      --biz-soft:#1B2C26;
-      --per:#E0925C;
-      --per-strong:#EFAE7E;
-      --per-soft:#2C2119;
-      --gold:#D8BB5C;
-      --good:#3FBE73;
-      --warn:#E0A93C;
-      --crit:#E2716A;
-      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px -12px rgba(0,0,0,0.5);
-      --c1:#3987e5; --c2:#d95926; --c3:#199e70; --c4:#c98500;
-      --c5:#d55181; --c6:#3fbf3f; --c7:#9085e9; --c8:#e66767;
-    }
-  }
-  :root[data-theme="dark"]{
-    color-scheme: dark;
-    --bg:#101614;
-    --surface:#171F1C;
-    --surface-2:#1D2622;
-    --surface-3:#26312B;
-    --border:#2C3A33;
-    --border-strong:#3B4B42;
-    --ink:#EDEFE9;
-    --ink-2:#B3BFB6;
-    --ink-muted:#7C8D83;
-    --biz:#3FA98A;
-    --biz-strong:#5BC4A4;
-    --biz-soft:#1B2C26;
-    --per:#E0925C;
-    --per-strong:#EFAE7E;
-    --per-soft:#2C2119;
-    --gold:#D8BB5C;
-    --good:#3FBE73;
-    --warn:#E0A93C;
-    --crit:#E2716A;
-    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px -12px rgba(0,0,0,0.5);
-    --c1:#3987e5; --c2:#d95926; --c3:#199e70; --c4:#c98500;
-    --c5:#d55181; --c6:#3fbf3f; --c7:#9085e9; --c8:#e66767;
-  }
-
   *{box-sizing:border-box;}
-  html,body{margin:0;padding:0;}
-  body{
-    background:var(--bg);
-    color:var(--ink);
-    font-family:var(--font-body);
-    font-size:15px;
-    line-height:1.5;
-    -webkit-font-smoothing:antialiased;
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:'Jost',sans-serif;font-weight:300;line-height:1.85;font-size:16px;letter-spacing:.01em;-webkit-font-smoothing:antialiased;}
+  h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:300;letter-spacing:.01em;margin:0;color:var(--ink);}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 56px;}
+  .eyebrow{letter-spacing:.38em;text-transform:uppercase;font-size:10.5px;color:var(--accent);font-weight:400;display:inline-flex;align-items:center;gap:16px;}
+  .eyebrow::before{content:"";width:22px;height:1px;background:var(--accent);}
+  .roman{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--accent);font-size:15px;letter-spacing:.06em;font-weight:500;}
+  .fade{opacity:0;transform:translateY(16px);transition:opacity .9s ease, transform .9s ease;}
+  .fade.in{opacity:1;transform:none;}
+
+  /* photo-panel */
+  .photo-panel{position:relative;background:linear-gradient(150deg,#EBDEC1 0%,#E0CFA9 50%,#D3BD8D 100%);}
+  .photo-panel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .photo-scrim{position:absolute;inset:0;background:linear-gradient(180deg, rgba(20,17,9,.15), rgba(20,17,9,.4) 65%, rgba(20,17,9,.6));}
+  .photo-scrim.light{background:linear-gradient(180deg, rgba(18,15,8,.24) 0%, rgba(18,15,8,.5) 45%, rgba(18,15,8,.84) 100%);}
+  .blend-bottom::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:220px;background:linear-gradient(to bottom, rgba(250,246,238,0) 0%, var(--bg) 96%);pointer-events:none;z-index:1;}
+
+  /* galleries */
+  .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;}
+  .gallery-grid img{width:100%;height:270px;object-fit:cover;display:block;transition:transform .6s ease;}
+  .gallery-grid a{overflow:hidden;display:block;}
+  .gallery-grid a:hover img{transform:scale(1.05);}
+
+  /* floor plans */
+  .plans-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;}
+  .plan-card{text-align:center;}
+  .plan-card h4{font-size:32px;font-weight:300;margin:10px 0 20px;}
+  .plan-card img{width:100%;border:1px solid var(--line);cursor:pointer;}
+  .plan-pending{border:1px dashed var(--line-strong);padding:80px 20px;color:var(--muted);font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;display:flex;align-items:center;justify-content:center;min-height:280px;}
+  .plan-card p{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-weight:400;margin:0 0 22px;}
+
+  /* nav */
+  nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:28px 0;transition:background .5s ease, padding .5s ease, border-color .5s ease;border-bottom:1px solid transparent;}
+  nav.scrolled{background:rgba(250,246,238,.96);backdrop-filter:blur(10px);padding:16px 0;border-color:var(--line);}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;}
+  nav:not(.scrolled) .brand,nav:not(.scrolled) .navlinks{color:var(--cream);}
+  nav:not(.scrolled) .navlinks a::after{background:var(--cream);}
+  .brand{font-family:'Cormorant Garamond',serif;font-size:21px;letter-spacing:.22em;text-transform:uppercase;font-weight:400;transition:color .4s ease;cursor:pointer;background:none;border:none;padding:0;}
+  .brand span{color:var(--accent);}
+  .navlinks{display:flex;gap:38px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);transition:color .4s ease;}
+  .navlinks button{position:relative;padding-bottom:5px;background:none;border:none;font-family:'Jost',sans-serif;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:inherit;cursor:pointer;font-weight:400;}
+  .navlinks button::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--accent);transition:width .4s ease;}
+  .navlinks button:hover::after,.navlinks button.active::after{width:100%;}
+  .navlinks button.active{color:var(--accent);}
+
+  /* hero */
+  .hero{position:relative;min-height:92vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;}
+  .hero-frame{position:absolute;inset:26px;border:1px solid rgba(250,246,238,.3);pointer-events:none;z-index:2;}
+  .hero-content{position:relative;z-index:2;max-width:760px;padding:0 32px;color:var(--cream);}
+  .hero .eyebrow{justify-content:center;margin-bottom:28px;color:#F5E9CC;}
+  .hero .eyebrow::before{background:#F5E9CC;}
+  .hero h1{font-size:clamp(40px,6vw,72px);line-height:1.08;font-weight:300;margin-bottom:26px;color:var(--cream);text-shadow:0 4px 24px rgba(0,0,0,.55);}
+  .hero h1 em{font-style:italic;color:#F5E9CC;}
+  .hero p{max-width:500px;margin:0 auto 20px;color:#fff;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;font-weight:400;line-height:1.55;text-shadow:0 2px 12px rgba(0,0,0,.55);}
+  .hero-stats{display:flex;gap:0;justify-content:center;margin:34px 0 40px;flex-wrap:wrap;}
+  .hero-stats div{padding:0 26px;border-right:1px solid rgba(250,246,238,.28);}
+  .hero-stats div:last-child{border-right:none;}
+  .hero-stats b{display:block;font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:300;color:#F5E9CC;}
+  .hero-stats span{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:#fff;font-weight:400;}
+  .hero-ctas{display:flex;gap:36px;justify-content:center;align-items:center;flex-wrap:wrap;}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:16px 42px;font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;cursor:pointer;border:1px solid currentColor;transition:all .4s ease;font-weight:400;background:none;font-family:'Jost',sans-serif;}
+  .btn-primary{background:var(--cream);color:#2A2415;border-color:var(--cream);}
+  .btn-primary:hover{background:transparent;color:var(--cream);}
+  .btn-line{color:var(--cream);border-color:transparent;border-bottom:1px solid rgba(250,246,238,.5);padding:4px 0;letter-spacing:.16em;}
+  .btn-line:hover{border-color:var(--cream);}
+  .btn-dark{background:none;color:var(--ink);border:1px solid var(--ink);}
+  .btn-dark:hover{background:var(--ink);color:var(--bg);}
+  .hero-note{margin-top:24px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;color:#fff;}
+  .scroll-cue{position:absolute;bottom:44px;left:50%;transform:translateX(-50%);width:1px;height:56px;background:linear-gradient(rgba(250,246,238,.55),transparent);z-index:2;}
+
+  section{padding:140px 0;}
+  .rule{border-top:1px solid var(--line);}
+  .section-head{text-align:center;max-width:600px;margin:0 auto 78px;}
+  .section-head h2{font-size:clamp(34px,4.4vw,54px);font-weight:300;line-height:1.1;margin-top:22px;}
+  .section-head h2 em{font-style:italic;color:var(--accent);}
+  .section-head p{color:var(--muted);font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;margin-top:18px;font-weight:400;line-height:1.5;}
+
+  /* tabs */
+  .tab-panel{display:none;}
+  .tab-panel.active{display:block;}
+
+  /* teaser grid on home */
+  .teaser-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-bottom:70px;}
+  .teaser-strip{display:grid;grid-template-columns:1fr 1fr 1fr;gap:36px;}
+  .teaser-card{border:1px solid var(--line);padding:44px 36px;text-align:center;background:rgba(255,255,255,.35);}
+  .teaser-card .roman{display:block;margin-bottom:10px;font-size:17px;}
+  .teaser-card h3{font-size:28px;font-weight:300;margin-bottom:12px;}
+  .teaser-card p{font-size:14.5px;color:var(--muted);font-weight:300;margin-bottom:22px;}
+
+  /* villa band (used inside villa tabs) */
+  .villa-band{position:relative;min-height:88vh;display:flex;align-items:flex-end;}
+  .villa-copy{position:relative;z-index:2;width:100%;padding:0 0 90px;color:var(--cream);}
+  .villa-copy .inner{max-width:560px;}
+  .villa-copy .roman{color:#F5E9CC;font-size:16px;}
+  .villa-copy h3{font-size:clamp(40px,5.4vw,64px);font-weight:300;margin:16px 0 20px;color:var(--cream);text-shadow:0 4px 20px rgba(0,0,0,.55);}
+  .villa-copy p.lead{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:23px;font-weight:400;line-height:1.45;color:#F8EDD3;margin-bottom:18px;text-shadow:0 2px 14px rgba(0,0,0,.5);}
+  .villa-copy p{color:#fff;font-size:16px;font-weight:400;margin-bottom:26px;max-width:460px;text-shadow:0 2px 12px rgba(0,0,0,.55);}
+  .villa-meta{display:flex;gap:0;margin:0 0 24px;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:#fff;font-weight:400;flex-wrap:wrap;}
+  .villa-meta span{padding-right:18px;margin-right:18px;border-right:1px solid rgba(250,246,238,.4);}
+  .villa-meta span:last-child{border-right:none;}
+
+  /* video */
+  .video-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+  .video-tile{aspect-ratio:16/10;position:relative;overflow:hidden;background:#1c1b15;}
+  .video-tile iframe{width:100%;height:100%;border:none;display:block;}
+  .video-label{text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--muted);font-size:15px;margin-top:16px;}
+
+  /* rates */
+  table.rates{width:100%;border-collapse:collapse;font-size:14.5px;}
+  table.rates th,table.rates td{padding:24px 18px;text-align:right;border-bottom:1px solid var(--line);}
+  table.rates th:first-child,table.rates td:first-child{text-align:left;}
+  table.rates th{font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);font-weight:400;border-bottom:1px solid var(--ink);padding-bottom:18px;}
+  table.rates td.name{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:400;}
+  table.rates td.name span{display:block;font-family:'Jost',sans-serif;color:var(--muted);font-size:11px;letter-spacing:.14em;text-transform:uppercase;margin-top:4px;font-weight:300;}
+  table.rates td.price{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:400;color:var(--accent);}
+
+  /* agent / trade panel */
+  .agent-list{max-width:680px;margin:50px auto 0;}
+  .agent-item{display:grid;grid-template-columns:50px 1fr;gap:24px;padding:32px 0;border-top:1px solid var(--line);}
+  .agent-item:last-child{border-bottom:1px solid var(--line);}
+  .agent-item h4{font-size:20px;font-weight:500;margin-bottom:8px;}
+  .agent-item p{font-size:14px;color:var(--muted);font-weight:500;margin:0;}
+
+  /* reviews */
+  .review-lead{max-width:640px;margin:0 auto;text-align:center;}
+  .review-lead .stars{color:var(--accent);font-size:20px;letter-spacing:.2em;margin-bottom:18px;}
+  .review-lead .quote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(24px,2.8vw,32px);font-weight:300;line-height:1.5;margin-bottom:18px;}
+  .review-lead .who{font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);font-weight:400;}
+  .review-pending{border:1px dashed var(--line-strong);padding:14px 22px;font-size:12px;letter-spacing:.06em;color:var(--muted);font-family:'Jost',sans-serif;display:inline-block;margin-top:14px;font-weight:500;}
+  .review-card{border:1px solid var(--line);padding:38px 34px;background:rgba(255,255,255,.35);}
+  .review-card .stars{color:var(--accent);font-size:15px;margin-bottom:14px;}
+  .review-card p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;line-height:1.5;margin-bottom:22px;}
+  .review-card .who{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-weight:400;}
+  .review-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px;margin-top:60px;}
+
+
+  /* policy */
+  .policy-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:110px;}
+  .policy-card{border:1px solid var(--line);background:rgba(255,255,255,.4);padding:46px 44px;}
+  .policy-card h4{font-family:'Jost',sans-serif;font-size:10.5px;letter-spacing:.32em;text-transform:uppercase;font-weight:500;color:var(--ink);padding-bottom:20px;margin-bottom:24px;border-bottom:1px solid var(--line);}
+  .policy-card p{font-size:15px;color:var(--muted);margin:0 0 14px;}
+  .policy-card p:last-child{margin-bottom:0;}
+  .policy-card ul{list-style:none;margin:0 0 6px;padding:0;}
+  .policy-card li{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:11px 0;border-bottom:1px dotted var(--line-strong);font-size:15px;color:var(--muted);}
+  .policy-card li:last-child{border-bottom:none;}
+  .policy-card li b{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;color:var(--ink);white-space:nowrap;}
+  .policy-card strong{font-weight:500;color:var(--ink);}
+  .policy-foot{text-align:center;margin-top:40px;font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--muted);font-size:16px;}
+
+  /* rating summary */
+  .rating-hero{text-align:center;margin:0 auto 90px;}
+  .rating-hero .score{font-family:'Cormorant Garamond',serif;font-size:clamp(76px,10vw,120px);font-weight:300;line-height:1;color:var(--ink);}
+  .rating-hero .score small{font-size:.32em;color:var(--muted);margin-left:6px;}
+  .rating-hero .stars{color:var(--accent);font-size:18px;letter-spacing:.5em;margin:18px 0 12px;padding-left:.5em;}
+  .rating-hero .cap{font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);}
+  .review-card .who b{display:block;font-family:'Cormorant Garamond',serif;font-size:19px;letter-spacing:.02em;text-transform:none;color:var(--ink);font-weight:500;margin-bottom:2px;}
+
+  /* trade-only enquiry */
+  .trade-check{display:flex;gap:14px;align-items:flex-start;font-size:14px;color:var(--muted);text-transform:none;letter-spacing:0;font-weight:300;cursor:pointer;margin:0;}
+  .trade-check input{width:16px;height:16px;margin-top:5px;flex:0 0 auto;accent-color:var(--accent);}
+  .form-error{min-height:22px;margin-top:18px;font-size:13.5px;color:#9B3D2B;}
+  .form-submit[disabled]{opacity:.35;cursor:not-allowed;}
+  .form-submit[disabled]:hover{background:none;color:var(--ink);}
+
+  /* form */
+  .form-wrap{max-width:720px;margin:0 auto;}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-bottom:38px;}
+  .form-row.full{grid-template-columns:1fr;}
+  label{display:block;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;font-weight:400;}
+  input,select,textarea{width:100%;padding:8px 0;border:none;border-bottom:1px solid var(--line);background:transparent;font-family:'Jost',sans-serif;font-weight:300;font-size:16px;color:var(--ink);}
+  textarea{min-height:64px;resize:vertical;}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);}
+  .form-submit{margin-top:20px;padding:16px 48px;background:none;color:var(--ink);border:1px solid var(--ink);font-size:11px;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;font-weight:600;}
+  .form-submit:hover{background:var(--ink);color:var(--bg);}
+  .form-note{font-size:13px;color:var(--muted);margin-top:24px;font-style:italic;font-family:'Cormorant Garamond',serif;}
+
+  footer{padding:64px 0;text-align:center;color:var(--muted);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;border-top:1px solid var(--line);font-weight:300;}
+  footer .brand{margin-bottom:16px;color:var(--ink);cursor:default;}
+
+  /* lightbox */
+  .lightbox{position:fixed;inset:0;background:rgba(10,9,5,.94);z-index:200;display:none;align-items:center;justify-content:center;}
+  .lightbox.open{display:flex;}
+  .lightbox img{max-width:88vw;max-height:82vh;object-fit:contain;box-shadow:0 20px 60px rgba(0,0,0,.5);}
+  .lightbox-close{position:absolute;top:24px;right:28px;color:#fff;font-size:30px;cursor:pointer;background:none;border:none;line-height:1;font-family:'Jost',sans-serif;}
+  .lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);color:#fff;font-size:38px;cursor:pointer;background:none;border:none;padding:16px 20px;opacity:.75;font-family:'Jost',sans-serif;}
+  .lightbox-nav:hover{opacity:1;}
+  .lightbox-prev{left:6px;}
+  .lightbox-next{right:6px;}
+  .lightbox-count{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.75);font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-family:'Jost',sans-serif;}
+  @media(max-width:900px){
+    .lightbox-nav{font-size:28px;padding:12px;}
+    .lightbox-close{top:16px;right:18px;}
   }
-  ::selection{ background:var(--gold); color:#1C2624; }
-  h1,h2,h3{ text-wrap:balance; margin:0; }
-  a{ color:inherit; }
-  button{ font-family:inherit; }
-  input,select,textarea{ font-family:inherit; font-size:14px; }
 
-  .app{ max-width:1180px; margin:0 auto; padding:20px 20px 80px; }
-
-  /* ---------- header ---------- */
-  .topbar{
-    display:flex; align-items:center; justify-content:space-between; gap:16px;
-    flex-wrap:wrap;
-    padding-bottom:18px; margin-bottom:18px;
-    border-bottom:1px solid var(--border);
-  }
-  .brand{ display:flex; align-items:center; gap:12px; }
-  .brand-mark{
-    width:44px; height:44px; border-radius:11px;
-    background:linear-gradient(155deg, var(--biz) 0%, var(--biz-strong) 100%);
-    display:flex; align-items:center; justify-content:center;
-    color:#fff; font-family:var(--font-display); font-weight:700; font-size:19px;
-    flex:none;
-    box-shadow: var(--shadow);
-  }
-  .brand h1{ font-family:var(--font-display); font-weight:700; font-size:22px; letter-spacing:0.2px; }
-  .brand .tagline{ color:var(--ink-2); font-size:12.5px; margin-top:2px; }
-
-  .topbar-controls{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
-  .save-status{ font-size:12px; color:var(--ink-muted); display:flex; align-items:center; gap:6px; min-width:120px; }
-  .save-dot{ width:7px; height:7px; border-radius:50%; background:var(--ink-muted); flex:none; }
-  .save-dot.ok{ background:var(--good); }
-  .save-dot.busy{ background:var(--gold); animation:pulse 1s infinite ease-in-out; }
-  .save-dot.err{ background:var(--crit); }
-  @keyframes pulse{ 0%,100%{opacity:1;} 50%{opacity:.35;} }
-  @media (prefers-reduced-motion: reduce){ .save-dot.busy{ animation:none; } }
-
-  select, .btn{
-    border:1px solid var(--border-strong);
-    background:var(--surface);
-    color:var(--ink);
-    border-radius:9px;
-    padding:8px 12px;
-    cursor:pointer;
-  }
-  select:focus-visible, .btn:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible{
-    outline: 2px solid var(--gold); outline-offset:2px;
-  }
-  .btn{ font-weight:600; font-size:13.5px; display:inline-flex; align-items:center; gap:6px; white-space:nowrap; }
-  .btn:hover{ border-color: var(--ink-muted); }
-  .btn-primary{ background:var(--biz); border-color:var(--biz); color:#fff; }
-  .btn-primary:hover{ background:var(--biz-strong); border-color:var(--biz-strong); }
-  .btn-personal{ background:var(--per); border-color:var(--per); color:#fff; }
-  .btn-personal:hover{ background:var(--per-strong); border-color:var(--per-strong); }
-  .btn-ghost{ background:transparent; border-color:transparent; color:var(--ink-2); padding:6px 8px; }
-  .btn-danger{ color:var(--crit); border-color:var(--crit); background:transparent; }
-  .btn-export{ background:transparent; border-color:var(--gold); color:var(--gold); font-size:13px; padding:7px 11px; }
-  .btn-export:hover{ background:var(--gold); color:#1C2624; }
-  .btn-export:disabled{ opacity:.5; cursor:default; }
-
-  /* ---------- sector segmented control ---------- */
-  .segmented{ display:flex; background:var(--surface-2); border:1px solid var(--border); border-radius:10px; padding:3px; }
-  .segmented button{
-    border:none; background:transparent; color:var(--ink-2); font-weight:600; font-size:13px;
-    padding:7px 14px; border-radius:8px; cursor:pointer;
-  }
-  .segmented button.active{ background:var(--surface); color:var(--ink); box-shadow:var(--shadow); }
-
-  /* ---------- tabs ---------- */
-  .tabs{ display:flex; gap:4px; margin-bottom:22px; border-bottom:1px solid var(--border); overflow-x:auto; }
-  .tab{
-    border:none; background:transparent; cursor:pointer; font-weight:600; font-size:14px;
-    color:var(--ink-muted); padding:10px 6px; margin-inline-end:22px; border-bottom:2px solid transparent;
-    white-space:nowrap;
-  }
-  .tab.active{ color:var(--ink); border-bottom-color:var(--gold); }
-
-  .view{ display:none; }
-  .view.active{ display:block; animation:fade .25s ease; }
-  @keyframes fade{ from{opacity:0; transform:translateY(3px);} to{opacity:1; transform:none;} }
-  @media (prefers-reduced-motion: reduce){ .view.active{ animation:none; } }
-
-  /* ---------- KPI ---------- */
-  .kpi-section{ margin-bottom:26px; }
-  .kpi-heading{ display:flex; align-items:center; gap:8px; font-size:13px; font-weight:700; color:var(--ink-2); text-transform:uppercase; letter-spacing:.06em; margin-bottom:10px; }
-  .kpi-heading .swatch{ width:9px; height:9px; border-radius:3px; }
-  .kpi-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(190px,1fr)); gap:12px; }
-  .kpi-card{
-    background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:14px 16px;
-    box-shadow:var(--shadow);
-  }
-  .kpi-label{ font-size:12px; color:var(--ink-muted); margin-bottom:6px; }
-  .kpi-value{ font-family:var(--font-display); font-size:24px; font-weight:700; font-variant-numeric:tabular-nums; letter-spacing:.2px; }
-  .kpi-value.neg{ color:var(--crit); }
-  .kpi-sub{ font-size:12px; color:var(--ink-muted); margin-top:4px; font-variant-numeric:tabular-nums; }
-
-  /* ---------- panels / charts ---------- */
-  .panels{ display:grid; grid-template-columns:repeat(auto-fit, minmax(430px,1fr)); gap:14px; margin-bottom:16px; }
-  .panel{ background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:16px 18px 12px; box-shadow:var(--shadow); }
-  .panel-title{ font-size:14.5px; font-weight:700; margin-bottom:2px; }
-  .panel-sub{ font-size:12px; color:var(--ink-muted); margin-bottom:10px; }
-  .panel.empty{ display:flex; align-items:center; justify-content:center; color:var(--ink-muted); font-size:13px; min-height:120px; }
-
-  .mini-table{ width:100%; min-width:0; border-collapse:collapse; font-size:13px; }
-  .mini-table th{ text-align:start; font-size:11px; text-transform:uppercase; letter-spacing:.04em; color:var(--ink-muted); font-weight:700; padding:6px 4px; border-bottom:1px solid var(--border); }
-  .mini-table td{ padding:7px 4px; border-bottom:1px solid var(--border); }
-  .mini-table tr:last-child td{ border-bottom:none; }
-  .mini-table td.num, .mini-table th.num{ text-align:end; font-variant-numeric:tabular-nums; }
-  .mini-table .bar-wrap{ position:relative; }
-  .mini-table .bar-fill{ position:absolute; inset-inline-start:0; top:2px; bottom:2px; border-radius:4px; opacity:.16; }
-  .mini-table td.label-cell{ position:relative; z-index:1; }
-
-  th.sortable{ cursor:pointer; user-select:none; white-space:nowrap; }
-  th.sortable:hover{ color:var(--ink); }
-  th.sortable .arrow{ font-size:10px; opacity:.6; margin-inline-start:3px; }
-
-  .legend{ display:flex; flex-wrap:wrap; gap:10px 16px; margin-top:8px; font-size:12px; color:var(--ink-2); }
-  .legend-item{ display:flex; align-items:center; gap:6px; }
-  .legend-swatch{ width:10px; height:10px; border-radius:3px; flex:none; }
-  .legend-line{ width:16px; height:2px; border-radius:2px; flex:none; }
-
-  .chart-tooltip{
-    position:fixed; pointer-events:none; z-index:80;
-    background:var(--ink); color:var(--bg); font-size:12px; line-height:1.4;
-    padding:7px 10px; border-radius:8px; box-shadow:var(--shadow);
-    transform:translate(-50%,-115%); white-space:nowrap; opacity:0; transition:opacity .1s;
-  }
-  :root[data-theme="dark"] .chart-tooltip, @media (prefers-color-scheme:dark){ .chart-tooltip{} }
-  .chart-tooltip.show{ opacity:1; }
-
-  svg.chart{ direction:ltr; }
-  svg.chart text{ font-family:var(--font-body); fill:var(--ink-2); direction:ltr; }
-  svg.chart .grid line{ stroke:var(--border); stroke-width:1; }
-  svg.chart .axis line{ stroke:var(--border-strong); }
-  svg.chart .bar-label{ font-size:11px; fill:var(--ink-2); font-variant-numeric:tabular-nums; }
-  svg.chart .cat-label{ font-size:11.5px; fill:var(--ink-2); }
-  svg.chart .mark{ cursor:pointer; }
-  svg.chart .mark:hover{ filter:brightness(0.92); }
-  :root[data-theme="dark"] svg.chart .mark:hover, .dark-mode svg.chart .mark:hover{ filter:brightness(1.18); }
-
-  /* ---------- table ---------- */
-  .table-toolbar{ display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap; margin-bottom:10px; }
-  .table-toolbar .filters{ display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
-  .sheet-hint{ font-size:12px; font-weight:400; color:var(--ink-muted); }
-  .add-row-btn{
-    width:100%; margin-top:8px; justify-content:center; border-style:dashed;
-    background:transparent; color:var(--ink-2);
-  }
-  .add-row-btn:hover{ background:var(--surface-2); color:var(--ink); }
-  input[type="search"]{
-    border:1px solid var(--border-strong); background:var(--surface); color:var(--ink);
-    border-radius:9px; padding:8px 12px; min-width:180px;
-  }
-  .table-wrap{ overflow-x:auto; border:1px solid var(--border); border-radius:14px; background:var(--surface); box-shadow:var(--shadow); }
-  table{ border-collapse:collapse; width:100%; min-width:720px; font-size:13.5px; }
-  thead th{
-    position:sticky; top:0; background:var(--surface-2); text-align:start; font-size:11.5px;
-    text-transform:uppercase; letter-spacing:.04em; color:var(--ink-2); font-weight:700;
-    padding:10px 12px; border-bottom:1px solid var(--border);
-  }
-  tbody td{ padding:2px 3px; border-bottom:1px solid var(--border); vertical-align:middle; }
-  tbody tr:last-child td{ border-bottom:none; }
-  tbody tr:hover{ background:var(--surface-2); }
-  td.num{ font-variant-numeric:tabular-nums; text-align:end; }
-
-  /* sheet-style editable cells */
-  td.cell{ padding:0; border-inline-end:1px solid var(--border); }
-  td.cell:last-of-type{ border-inline-end:none; }
-  .cell-input{
-    width:100%; height:100%; min-height:34px; border:1.5px solid transparent; background:transparent;
-    color:var(--ink); padding:7px 10px; font-size:13.5px; border-radius:0; font-family:inherit;
-  }
-  .cell-input:hover{ background:var(--surface-2); }
-  .cell-input:focus{ background:var(--surface); border-color:var(--gold); border-radius:6px; position:relative; z-index:2; outline:none; }
-  input.cell-input[type="number"], input.cell-input.num{ text-align:end; font-variant-numeric:tabular-nums; }
-  select.cell-input{ cursor:pointer; appearance:none; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%238A968D'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:left 10px center; padding-inline-start:22px; }
-  .pill{ display:inline-flex; align-items:center; gap:5px; padding:3px 9px; border-radius:999px; font-size:11.5px; font-weight:700; }
-  .pill.biz{ background:var(--biz-soft); color:var(--biz-strong); }
-  .pill.per{ background:var(--per-soft); color:var(--per-strong); }
-  .row-actions{ display:flex; gap:4px; }
-  .icon-btn{ border:none; background:transparent; color:var(--ink-muted); cursor:pointer; padding:5px; border-radius:6px; font-size:14px; line-height:1; }
-  .icon-btn:hover{ background:var(--surface-3); color:var(--ink); }
-  .empty-row td{ text-align:center; color:var(--ink-muted); padding:26px; }
-
-  /* ---------- modal ---------- */
-  .modal-backdrop{
-    position:fixed; inset:0; background:rgba(15,20,18,0.5); backdrop-filter:blur(2px);
-    display:flex; align-items:flex-start; justify-content:center; padding:5vh 16px; z-index:100;
-    opacity:0; pointer-events:none; transition:opacity .15s;
-  }
-  .modal-backdrop.open{ opacity:1; pointer-events:auto; }
-  .modal{
-    background:var(--surface); border-radius:16px; padding:22px 24px 20px; width:100%; max-width:520px;
-    box-shadow:0 20px 60px -20px rgba(0,0,0,.4); border:1px solid var(--border);
-    max-height:88vh; overflow-y:auto;
-  }
-  .modal h3{ font-size:17px; margin-bottom:14px; font-family:var(--font-display); }
-  .field{ margin-bottom:12px; }
-  .field label{ display:block; font-size:12px; font-weight:600; color:var(--ink-2); margin-bottom:5px; }
-  .field input, .field select, .field textarea{
-    width:100%; border:1px solid var(--border-strong); background:var(--surface); color:var(--ink);
-    border-radius:9px; padding:9px 11px;
-  }
-  .field-row{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
-  .modal-actions{ display:flex; justify-content:space-between; align-items:center; margin-top:18px; gap:8px; }
-  .modal-actions .end{ display:flex; gap:8px; }
-
-  .toast-wrap{ position:fixed; bottom:18px; left:50%; transform:translateX(-50%); z-index:120; display:flex; flex-direction:column; gap:8px; align-items:center; }
-  .toast{ background:var(--ink); color:var(--bg); padding:9px 16px; border-radius:999px; font-size:13px; box-shadow:var(--shadow); opacity:0; transition:opacity .2s, transform .2s; transform:translateY(6px); }
-  .toast.show{ opacity:1; transform:none; }
-
-  .footnote{ margin-top:30px; padding-top:16px; border-top:1px solid var(--border); font-size:12px; color:var(--ink-muted); line-height:1.7; }
-  .footnote b{ color:var(--ink-2); }
-
-
-  /* ---------- v2 additions ---------- */
-  .pill.warn{ background:#F6E7C8; color:#7A5208; }
-  :root[data-theme="dark"] .pill.warn{ background:#3A2D12; color:#E0A93C; }
-  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .pill.warn{ background:#3A2D12; color:#E0A93C; } }
-  .pill.st-ok{ background:#DDF1E4; color:#17693A; }
-  .pill.st-warn{ background:#F6E7C8; color:#7A5208; }
-  .pill.st-crit{ background:#F6DDDB; color:#97292A; }
-  .pill.st-muted{ background:var(--surface-3); color:var(--ink-2); }
-  @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]) .pill.st-ok{ background:#17301F; color:#6FD39A; }
-    :root:not([data-theme="light"]) .pill.st-warn{ background:#3A2D12; color:#E0A93C; }
-    :root:not([data-theme="light"]) .pill.st-crit{ background:#3A1C1B; color:#F0908A; }
-  }
-  :root[data-theme="dark"] .pill.st-ok{ background:#17301F; color:#6FD39A; }
-  :root[data-theme="dark"] .pill.st-warn{ background:#3A2D12; color:#E0A93C; }
-  :root[data-theme="dark"] .pill.st-crit{ background:#3A1C1B; color:#F0908A; }
-
-  /* wide sheets scroll sideways instead of squashing their columns */
-  #incomeTable{ min-width:1900px; }
-  #expenseTable{ min-width:1050px; }
-  #fixedTable{ min-width:1100px; }
-  #paymentTable{ min-width:1150px; }
-  .w-type{ min-width:150px; } .w-client{ min-width:190px; } .w-ctype{ min-width:175px; }
-  .w-villa{ min-width:140px; } .w-date{ min-width:140px; } .w-num{ min-width:88px; } .w-plat{ min-width:150px; }
-  .w-amt{ min-width:110px; } .w-cur{ min-width:84px; } .w-pay{ min-width:130px; } .w-notes{ min-width:200px; }
-  .w-group{ min-width:180px; } .w-cat{ min-width:170px; } .w-booking{ min-width:330px; } .w-method{ min-width:150px; }
-  .w-receipt{ min-width:210px; } .w-check{ min-width:52px; text-align:center; }
-  .net-cell{ padding:0 12px; font-weight:600; background:var(--surface-2); }
-  .usd-cell{ padding:0 12px; color:var(--ink-2); }
-  tr.row-infl{ background:color-mix(in srgb, var(--gold) 9%, transparent); }
-  tr.row-auto td.cell:first-child{ box-shadow: inset 3px 0 0 var(--gold); }
-  .client-cell{ display:flex; align-items:center; }
-  .client-cell .cell-input{ flex:1; min-width:0; }
-  .link-btn{ border:none; background:transparent; color:var(--biz); font-weight:700; cursor:pointer; padding:4px 8px; border-radius:6px; font-size:15px; }
-  .link-btn:hover{ background:var(--biz-soft); }
-  .pill-btn{ border:none; background:transparent; cursor:pointer; padding:4px 6px; }
-  .pill-btn:hover .pill{ filter:brightness(0.95); }
-  .name-link{ border:none; background:transparent; color:var(--biz); font-weight:600; cursor:pointer; padding:0; text-decoration:underline; text-underline-offset:2px; font-size:13px; }
-  .cell-check{ width:18px; height:18px; accent-color:var(--biz); cursor:pointer; }
-  .receipt-cell{ padding:2px 8px; white-space:nowrap; }
-  .receipt-link{ color:var(--biz); font-weight:600; font-size:13px; text-decoration:none; }
-  .receipt-link:hover{ text-decoration:underline; }
-  .receipt-btn{ font-size:12.5px; padding:5px 9px; border-color:var(--border-strong); }
-  .banner{ display:none; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap; background:var(--per-soft); border:1px solid var(--border-strong); border-radius:12px; padding:10px 14px; margin-bottom:12px; font-size:13px; }
-  .assign-actions{ display:flex; gap:8px; align-items:center; }
-  .totals-line{ margin:8px 2px 0; font-size:12.5px; color:var(--ink-2); }
-  .section-title{ font-size:15px; margin:30px 0 4px; }
-  .section-note{ font-size:12.5px; color:var(--ink-muted); margin:0 0 10px; max-width:75ch; }
-  .fx-row{ display:flex; align-items:center; gap:8px; margin-top:12px; font-size:12.5px; color:var(--ink-2); flex-wrap:wrap; }
-  .fx-input{ width:84px; border:1px solid var(--border-strong); background:var(--surface); color:var(--ink); border-radius:8px; padding:5px 8px; text-align:end; }
-  .mini-table.pnl td{ padding:9px 6px; }
-  .mini-table.pnl tr.pnl-sub td{ font-weight:700; }
-  .mini-table.pnl tr.pnl-total td{ font-weight:800; font-size:14.5px; border-top:2px solid var(--border-strong); }
-  .mini-table.pnl td.neg{ color:var(--crit); }
-  .name-col{ white-space:nowrap; }
-  .fixed-box{ background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:12px 16px; margin-bottom:14px; box-shadow:var(--shadow); }
-  .fixed-box summary{ cursor:pointer; font-size:14px; }
-  .fixed-box[open] summary{ margin-bottom:8px; }
-
-  @media (max-width:640px){
-    .field-row{ grid-template-columns:1fr; }
-    .topbar{ flex-direction:column; align-items:flex-start; }
+  @media(max-width:900px){
+    .gallery-grid{grid-template-columns:1fr 1fr;}
+    .gallery-grid img{height:200px;}
+    .plans-grid{grid-template-columns:1fr;}
+    .teaser-grid{grid-template-columns:1fr;gap:30px;}
+    .teaser-strip{grid-template-columns:1fr;gap:20px;}
+    .video-grid{grid-template-columns:1fr;}
+    .review-grid{grid-template-columns:1fr;}
+    .policy-grid{grid-template-columns:1fr;margin-top:70px;}
+    .policy-card{padding:34px 26px;}
+    .hero-stats div{padding:0 14px;}
+    .form-row{grid-template-columns:1fr;gap:22px;}
+    nav .wrap{flex-wrap:wrap;row-gap:14px;}
+    .navlinks{display:flex;width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;gap:24px;padding-bottom:2px;scrollbar-width:none;}
+    .navlinks::-webkit-scrollbar{display:none;}
+    .navlinks button{flex:0 0 auto;font-size:10.5px;}
+    section{padding:88px 0;}
+    .wrap{padding:0 24px;}
+    table.rates{font-size:12.5px;}
+    table.rates th,table.rates td{padding:16px 8px;}
+    table.rates td.price{font-size:21px;}
   }
 </style>
 </head>
 <body>
-<div class="app">
 
-  <div class="topbar">
-    <div class="brand">
-      <div class="brand-mark">MP</div>
-      <div>
-        <h1>Magna Pacific</h1>
-        <div class="tagline">Income &amp; expense management · Villas, Moti and Sivan</div>
-      </div>
-    </div>
-    <div class="topbar-controls">
-      <div class="save-status"><span class="save-dot" id="saveDot"></span><span id="saveText">Loading…</span></div>
-      <select id="yearFilter" aria-label="Filter by year"></select>
-      <div class="segmented" id="sectorSeg" role="tablist" aria-label="Filter business / Moti / Sivan">
-        <button data-sector="all" class="active">All</button>
-        <button data-sector="business">Business</button>
-        <button data-sector="moti">Moti</button>
-        <button data-sector="sivan">Sivan</button>
-      </div>
+<nav id="nav">
+  <div class="wrap">
+    <button class="brand" onclick="showTab('home')">Playa Hermosa <span>Estates</span></button>
+    <div class="navlinks">
+      <button data-tab="elu" onclick="showTab('elu')">Villa Elu</button>
+      <button data-tab="nalani" onclick="showTab('nalani')">Villa Nalani</button>
+      <button data-tab="rates" onclick="showTab('rates')">Rates</button>
+      <button data-tab="reviews" onclick="showTab('reviews')">Reviews</button>
+      <button data-tab="contact" onclick="showTab('contact')">Contact</button>
     </div>
   </div>
+</nav>
 
-  <div class="tabs" role="tablist">
-    <button class="tab active" data-view="overview">Summary</button>
-    <button class="tab" data-view="income">Income</button>
-    <button class="tab" data-view="payments">Payments</button>
-    <button class="tab" data-view="expenses">Expenses</button>
-  </div>
+<!-- ============ HOME ============ -->
+<div class="tab-panel active" id="tab-home">
 
-  <!-- OVERVIEW -->
-  <section class="view active" id="view-overview">
-    <div class="table-toolbar">
-      <h3 style="font-size:15px;">Overview</h3>
-      <div class="filters">
-        <button class="btn btn-export" id="exportAllBtn">⬇ Export all to Excel</button>
+  <section class="hero photo-panel blend-bottom">
+    <img src="https://lh3.googleusercontent.com/d/1VKaqkfdx16v-Jr-LVTxKcGT25ZP1eNMB=w1920" alt="" onerror="this.remove();">
+    <div class="photo-scrim"></div>
+    <div class="hero-frame"></div>
+    <div class="hero-content">
+      <div class="eyebrow">Playa Hermosa · Costa Rica</div>
+      <h1>Two estates, one stretch<br>of <em>private coastline</em></h1>
+      <p>Presented exclusively for trade partners - the kind of privacy your most discerning clients are already looking for.</p>
+      <div class="hero-stats">
+        <div><b>10</b><span>Bedrooms combined</span></div>
+        <div><b>180°</b><span>Pacific ocean views</span></div>
+        <div><b>24/7</b><span>Staff &amp; concierge</span></div>
+        <div><b>2</b><span>Estates, one booking</span></div>
       </div>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="javascript:void(0)" onclick="showTab('contact')">Request a quote</a>
+        <a class="btn btn-line" href="#collection">View the estates</a>
+      </div>
+      <div class="hero-note">Peak season dates move quickly - hold availability for your client today.</div>
     </div>
-    <div id="ovBusinessKpi" class="kpi-section"></div>
-    <div id="ovPersonalKpi" class="kpi-section"></div>
-    <div id="ovManagerCharts" class="kpi-section"></div>
-    <div id="ovTables"></div>
+    <div class="scroll-cue"></div>
   </section>
 
-  <!-- INCOME -->
-  <section class="view" id="view-income">
-    <div class="table-toolbar">
-      <h3 style="font-size:15px;">Income sheet <span class="sheet-hint">— click any cell to edit, just like a spreadsheet</span></h3>
-      <div class="filters">
-        <input type="search" id="incomeSearch" placeholder="Search client / villa / platform…">
-        <select id="incomeVillaFilter" aria-label="Filter by villa"></select>
-        <select id="incomePlatformFilter" aria-label="Filter by platform"></select>
-        <select id="incomeClientTypeFilter" aria-label="Filter by client type"></select>
-        <select id="incomeCurrencyFilter" aria-label="Filter by currency"></select>
-        <button class="btn btn-ghost" id="incomeClearFiltersBtn">Clear filters</button>
-        <button class="btn btn-export" id="exportIncomeBtn">⬇ Export to Excel</button>
+  <section id="collection" class="rule">
+    <div class="wrap">
+      <div class="section-head fade">
+        <div class="eyebrow" style="justify-content:center;">The layout</div>
+        <h2>The <em>collection</em></h2>
+        <p>Two private estates on the same stretch of coastline - explore each in full</p>
+      </div>
+      <div class="plans-grid fade">
+        <div class="plan-card">
+          <div class="roman">Estate I</div>
+          <h4>Villa Elu</h4>
+          <p>4 bed · up to 8 guests · private infinity pool</p>
+          <a href="javascript:void(0)" onclick="showTab('elu')">
+            <img src="https://lh3.googleusercontent.com/d/1nJX_jK1w2Cv6lS7ubGe_pTo5QQFFJSyp=w1600" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          </a>
+          <div class="plan-pending" style="display:none;">Plan pending</div>
+          <div style="margin-top:24px;"><a class="btn btn-dark" href="javascript:void(0)" onclick="showTab('elu')">Explore Villa Elu</a></div>
+        </div>
+        <div class="plan-card">
+          <div class="roman">Estate II</div>
+          <h4>Villa Nalani</h4>
+          <p>6 bed · up to 11 guests · lap pool</p>
+          <a href="javascript:void(0)" onclick="showTab('nalani')">
+            <img src="https://lh3.googleusercontent.com/d/1IE5G9n9VDdoNMKadKf2vBjWg60KA7W84=w1600" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          </a>
+          <div class="plan-pending" style="display:none;">Plan pending</div>
+          <div style="margin-top:24px;"><a class="btn btn-dark" href="javascript:void(0)" onclick="showTab('nalani')">Explore Villa Nalani</a></div>
+        </div>
       </div>
     </div>
-    <div class="table-wrap"><table id="incomeTable"><thead></thead><tbody></tbody></table></div>
-    <button class="btn btn-primary add-row-btn" id="addIncomeBtn">+ New row</button>
-    <div class="totals-line" id="incomeTotals"></div>
-    <datalist id="platformList"></datalist>
   </section>
 
-  <!-- PAYMENTS -->
-  <section class="view" id="view-payments">
-    <div class="table-toolbar">
-      <h3 style="font-size:15px;">Payments tracking <span class="sheet-hint">— record every payment per client and attach its receipt</span></h3>
-      <div class="filters">
-        <input type="search" id="paySearch" placeholder="Search method / notes…">
-        <select id="payClientFilter" aria-label="Filter by client"></select>
-        <button class="btn btn-ghost" id="payClearBtn">Clear filters</button>
-        <button class="btn btn-export" id="exportPaymentsBtn">⬇ Export to Excel</button>
+  <section class="rule">
+    <div class="wrap">
+      <div class="teaser-strip fade">
+        <div class="teaser-card">
+          <span class="roman">III</span>
+          <h3>Rates &amp; policy</h3>
+          <p>2026 / 2027 season pricing for both estates, per-night and buyout rates.</p>
+          <a class="btn btn-dark" href="javascript:void(0)" onclick="showTab('rates')">View rates</a>
+        </div>
+        <div class="teaser-card">
+          <span class="roman">IV</span>
+          <h3>Guest reviews</h3>
+          <p class="review-quote-teaser" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;color:var(--ink);">"The photos don't do it justice." &nbsp;★★★★★ 5.0 average guest rating.</p>
+          <a class="btn btn-dark" href="javascript:void(0)" onclick="showTab('reviews')">Read reviews</a>
+        </div>
+        <div class="teaser-card">
+          <span class="roman">V</span>
+          <h3>Enquire</h3>
+          <p>Hold dates, request net rates, or ask a question for your client.</p>
+          <a class="btn btn-dark" href="javascript:void(0)" onclick="showTab('contact')">Get in touch</a>
+        </div>
       </div>
     </div>
-    <div id="payClientSummary"></div>
-    <h3 class="section-title">Payments log</h3>
-    <p class="section-note">One row per payment received. Pick the booking it belongs to, then upload the receipt (image or PDF, up to 8 MB). Receipts are stored privately in your Google Drive and linked here — only you can open them while signed in to Google.</p>
-    <div class="table-wrap"><table id="paymentTable"></table></div>
-    <button class="btn btn-primary add-row-btn" id="addPaymentBtn">+ New payment</button>
-    <div class="totals-line" id="paymentTotals"></div>
-    <input type="file" id="receiptFile" accept="image/*,application/pdf" hidden>
-    <datalist id="methodList"></datalist>
   </section>
 
-  <!-- EXPENSES -->
-  <section class="view" id="view-expenses">
-    <div class="table-toolbar">
-      <h3 style="font-size:15px;">Expenses sheet <span class="sheet-hint">— click any cell to edit, just like a spreadsheet</span></h3>
-      <div class="filters">
-        <input type="search" id="expenseSearch" placeholder="Search category / group…">
-        <select id="expenseGroupFilter" aria-label="Filter by group"></select>
-        <select id="expenseCategoryFilter" aria-label="Filter by category"></select>
-        <select id="expenseCurrencyFilter" aria-label="Filter by currency"></select>
-        <button class="btn btn-ghost" id="expenseClearFiltersBtn">Clear filters</button>
-        <button class="btn btn-export" id="exportExpenseBtn">⬇ Export to Excel</button>
-      </div>
-    </div>
-    <div class="banner" id="assignBar"></div>
-    <details class="fixed-box" id="fixedBox">
-      <summary><b>Fixed monthly expenses</b> <span id="fixedCount" class="sheet-hint"></span> <span class="sheet-hint">— entered automatically every month</span></summary>
-      <p class="section-note">Expenses that repeat every month (mortgage, internet, salaries…). Once a row is active, a matching expense is added to the sheet below automatically for every month from <i>From month</i> up to the current month — and a new one each month after that. A month that already has a row for the same type, group and category is never duplicated. Delete an auto-added row and it will not come back.</p>
-      <div class="table-wrap"><table id="fixedTable"></table></div>
-      <button class="btn btn-ghost add-row-btn" id="addFixedBtn">+ New fixed expense</button>
-    </details>
-    <div class="table-wrap"><table id="expenseTable"><thead></thead><tbody></tbody></table></div>
-    <button class="btn btn-personal add-row-btn" id="addExpenseBtn">+ New row</button>
-    <div class="totals-line" id="expenseTotals"></div>
-  </section>
-
-  <div class="footnote">
-    <div><b>Currency:</b> every record keeps its original currency (USD / ILS) in the sheets. The overview converts everything to USD using the exchange rate shown in the "How the total is built" panel — change it there and all totals follow.</div>
-    <div><b>Income:</b> <i>Gross</i> is the price of the stay, <i>Net price</i> is the gross after the platform / agency commission. A stay counts in the year and month of its <b>check-in</b>. Influencer stays count nights but no income. Payments are tracked against the net price.</div>
-    <div><b>Channels:</b> Direct, Airbnb, and Agencies (every other platform or agent). A stay sold as "airbnb + direct" is counted under Airbnb — change its platform if you want it elsewhere.</div>
-    <div><b>Historical data:</b> the stays were loaded from your Excel file (dates from its "date of stay" column and year). Payment dates were not in the file, so they start out equal to the check-in date — overwrite them as you go.</div>
-    <div id="updatedAt" style="margin-top:6px;"></div>
-  </div>
-
+  <footer>
+    <div class="brand" style="font-family:'Cormorant Garamond',serif;font-size:18px;letter-spacing:.16em;">Playa Hermosa Estates</div>
+    Trade partners only · Playa Hermosa, Costa Rica
+  </footer>
 </div>
 
-<div class="chart-tooltip" id="chartTooltip"></div>
-<div class="toast-wrap" id="toastWrap"></div>
+<!-- ============ VILLA ELU ============ -->
+<div class="tab-panel" id="tab-elu">
 
-<script id="seed-data" type="application/json">{"version": 2, "updatedAt": "2026-11-07T16:05:54.100278Z", "incomeRecords": [{"id": "bi-1", "sector": "business", "owner": "", "date": "2023-12-22", "checkIn": "2023-12-22", "checkOut": "2023-12-30", "clientType": "paying", "client": "Satin Family", "villa": "Elu", "nights": 9, "pricePerNight": 5400, "platform": "travel pioneers", "commissionRate": 0.05, "category": "Villa booking", "grossAmount": 54918.0, "netAmount": 52172.1, "currency": "USD", "notes": "Check nights: Excel says 9, the dates give 8"}, {"id": "bi-2", "sector": "business", "owner": "", "date": "2023-12-27", "checkIn": "2023-12-27", "checkOut": "2024-01-06", "clientType": "paying", "client": "Mario", "villa": "Nalani", "nights": 10, "pricePerNight": 6000, "platform": "yuli", "commissionRate": 0.05, "category": "Villa booking", "grossAmount": 57000.0, "netAmount": 54150.0, "currency": "USD", "notes": "VAT: no"}, {"id": "bi-3", "sector": "business", "owner": "", "date": "2023-12-31", "checkIn": "2023-12-31", "checkOut": "2024-01-02", "clientType": "paying", "client": "Jamie", "villa": "Elu", "nights": 2, "pricePerNight": 2000, "platform": "direct", "commissionRate": null, "category": "Villa booking", "grossAmount": 4000.0, "netAmount": 4000.0, "currency": "USD", "notes": "VAT: no"}, {"id": "bi-4", "sector": "business", "owner": "", "date": "2024-01-29", "checkIn": "2024-01-29", "checkOut": "2024-02-04", "clientType": "paying", "client": "Clair Duddle", "villa": "Elu", "nights": 6, "pricePerNight": 1500, "platform": "airbnb", "commissionRate": 0.15, "category": "Villa booking", "grossAmount": 8694.0, "netAmount": 7389.9, "currency": "USD", "notes": ""}, {"id": "bi-5", "sector": "business", "owner": "", "date": "2024-02-21", "checkIn": "2024-02-21", "checkOut": "2024-02-24", "clientType": "paying", "client": "Anthony Gustin", "villa": "Elu", "nights": 3, "pricePerNight": 1000, "platform": "airbnb", "commissionRate": 0.15, "category": "Villa booking", "grossAmount": 2881.0, "netAmount": 2448.85, "currency": "USD", "notes": ""}, {"id": "bi-6", "sector": "business", "owner": "", "date": "2024-02-29", "checkIn": "2024-02-29", "checkOut": "2024-03-03", "clientType": "paying", "client": "Jennifer Barlettani", "villa": "Elu", "nights": 3, "pricePerNight": 1800, "platform": "airbnb", "commissionRate": 0.15, "category": "Villa booking", "grossAmount": 6102.0, "netAmount": 5186.7, "currency": "USD", "notes": ""}, {"id": "bi-7", "sector": "business", "owner": "", "date": "2024-03-10", "checkIn": "2024-03-10", "checkOut": "2024-03-14", "clientType": "paying", "client": "Rudy Topete", "villa": "Nalani", "nights": 4, "pricePerNight": 2939, "platform": "airbnb", "commissionRate": 0.15, "category": "Villa booking", "grossAmount": 11756.0, "netAmount": 9992.6, "currency": "USD", "notes": ""}, {"id": "bi-8", "sector": "business", "owner": "", "date": "2024-03-14", "checkIn": "2024-03-14", "checkOut": "2024-03-17", "clientType": "paying", "client": "Mathilda Vial", "villa": "Elu", "nights": 3, "pricePerNight": 2744, "platform": "airbnb", "commissionRate": 0.15, "category": "Villa booking", "grossAmount": 8232.0, "netAmount": 6997.2, "currency": "USD", "notes": ""}, {"id": "bi-9", "sector": "business", "owner": "", "date": "2024-03-23", "checkIn": "2024-03-23", "checkOut": "2024-03-26", "clientType": "paying", "client": "Mike Sherill", "villa": "Elu", "nights": 6, "pricePerNight": 2303, "platform": "airbnb", "commissionRate": 0.15, "category": "Villa booking", "grossAmount": 13818.0, "netAmount": 11745.3, "currency": "USD", "notes": "Check nights: Excel says 6, the dates give 3"}, {"id": "bi-10", "sector": "business", "owner": "", "date": "2024-04-08", "checkIn": "2024-04-08", "checkOut": "2024-04-14", "clientType": "paying", "client": "Austin Vance", "villa": "Nalani", "nights": 6, "pricePerNight": 2083, "platform": "direct", "commissionRate": null, "category": "Villa booking", "grossAmount": 12500.0, "netAmount": 12500.0, "currency": "USD", "notes": ""}, {"id": "bi-11", "sector": "business", "owner": "", "date": "2024-05-02", "checkIn": "2024-05-02", "checkOut": "2024-05-12", "clientType": "paying", "client": "Jamie", "villa": "Nalani", "nights": 10, "pricePerNight": 1800, "platform": "direct", "commissionRate": null, "category": "Villa booking", "grossAmount": 18000.0, "netAmount": 18000.0, "currency": "USD", "notes": ""}, {"id": "bi-12", "sector": "business", "owner": "", "date": "2024-05-08", "checkIn": "2024-05-08", "checkOut": "2024-05-12", "clientType": "paying", "client": "Jamie", "villa": "Elu", "nights": 4, "pricePerNight": 1400, "platform": "direct", "commissionRate": null, "category": "Villa booking", "grossAmount": 5600.0, "netAmount": 5600.0, "currency": "USD", "notes": ""}, {"id": "bi-13", "sector": "business", "owner": "", "date": "2024-04-09", "checkIn": "2024-04-09", "checkOut": "2024-04-18", "clientType": "paying", "client": "Victor Almeida", "villa": "Elu", "nights": 9, "pricePerNight": 2088, "platform": "airbnb", "commissionRate": 0.15, "category": "Villa booking", "grossAmount": 18424.0, "netAmount": 15660.4, "currency": "USD", "notes": ""}, {"id": "bi-14", "sector": "business", "owner": "", "date": "2024-05-24", "checkIn": "2024-05-24", "checkOut": "2024-05-28", "clientType": "paying", "client": "Shassity Stevenson", "villa": "Elu", "nights": 4, "pricePerNight": 2100, "platform": "airbnb", "commissionRate": 0.15, "category": "Villa booking", "grossAmount": 8232.0, "netAmount": 6997.2, "currency": "USD", "notes": ""}, {"id": "bi-15", "sector": "business", "owner": "", "date": "2024-07-07", "checkIn": "2024-07-07", "checkOut": "2024-07-21", "clientType": "paying", "client": "Patrick Callahan", "villa": "Elu", "nights": 14, "pricePerNight": 2500, "platform": "direct", "commissionRate": null, "category": "Villa booking", "grossAmount": 35000.0, "netAmount": 35000.0, "currency": "USD", "notes": ""}, {"id": "bi-16", "sector": "business", "owner": "", "date": "2024-07-22", "checkIn": "2024-07-22", "checkOut": "2024-08-03", "clientType": "paying", "client": "Evan", "villa": "Elu", "nights": 12, "pricePerNight": 2500, "platform": "origin", "commissionRate": null, "category": "Villa booking", "grossAmount": 33900.0, "netAmount": 33900.0, "currency": "USD", "notes": ""}, {"id": "bi-17", "sector": "business", "owner": "", "date": "2024-08-15", "checkIn": "2024-08-15", "checkOut": "2024-08-30", "clientType": "paying", "client": "Beatrice", "villa": "Elu", "nights": 15, "pricePerNight": 1821, "platform": "airbnb", "commissionRate": 0.15, "category": "Villa booking", "grossAmount": 27315.0, "netAmount": 23217.75, "currency": "USD", "notes": ""}, {"id": "bi-18", "sector": "business", "owner": "", "date": "2024-07-07", "checkIn": "2024-07-07", "checkOut": "2024-07-14", "clientType": "paying", "client": "Hadas", "villa": "Nalani", "nights": 7, "pricePerNight": 1214, "platform": "direct", "commissionRate": null, "category": "Villa booking", "grossAmount": 8500.0, "netAmount": 8500.0, "currency": "USD", "notes": ""}, {"id": "bi-19", "sector": "business", "owner": "", "date": "2024-10-24", "checkIn": "2024-10-24", "checkOut": "2024-10-27", "clientType": "paying", "client": "Roberto Gamboa", "villa": "Elu + Nalani", "nights": 3, "pricePerNight": null, "platform": "direct", "commissionRate": null, "category": "Villa booking", "grossAmount": 10000.0, "netAmount": 10000.0, "currency": "USD", "notes": ""}, {"id": "bi-20", "sector": "business", "owner": "", "date": "2024-10-31", "checkIn": "2024-10-31", "checkOut": "2024-11-03", "clientType": "paying", "client": "Juliana Mulholland", "villa": "Elu", "nights": 3, "pricePerNight": null, "platform": "journey", "commissionRate": 0.15, "category": "Villa booking", "grossAmount": 8475.0, "netAmount": 7203.75, "currency": "USD", "notes": ""}, {"id": "bi-21", "sector": "business", "owner": "", "date": "2024-11-25", "checkIn": "2024-11-25", "checkOut": "2024-11-29", "clientType": "paying", "client": "Mike", "villa": "Elu", "nights": 4, "pricePerNight": null, "platform": "airbnb", "commissionRate": null, "category": "Villa booking", "grossAmount": 12256.0, "netAmount": 12256.0, "currency": "USD", "notes": ""}, {"id": "bi-22", "sector": "business", "owner": "", "date": "2024-12-05", "checkIn": "2024-12-05", "checkOut": "2024-12-12", "clientType": "paying", "client": "Darius", "villa": "Elu", "nights": 7, "pricePerNight": null, "platform": "frederick soutbys", "commissionRate": 0.1, "category": "Villa booking", "grossAmount": 20000.0, "netAmount": 18000.0, "currency": "USD", "notes": "Stay dates reconstructed: Excel had converted the entry into a date (2012-12-05) — assumed 5–12 Dec"}, {"id": "bi-23", "sector": "business", "owner": "", "date": "2024-12-24", "checkIn": "2024-12-24", "checkOut": "2024-12-27", "clientType": "paying", "client": "Jessica And David Sawin", "villa": "Nalani", "nights": 3, "pricePerNight": null, "platform": "direct", "commissionRate": null, "category": "Villa booking", "grossAmount": 8475.0, "netAmount": 8475.0, "currency": "USD", "notes": ""}, {"id": "bi-24", "sector": "business", "owner": "", "date": "2024-12-27", "checkIn": "2024-12-27", "checkOut": "2025-01-08", "clientType": "paying", "client": "Mario", "villa": "Nalani", "nights": 10, "pricePerNight": null, "platform": "rinat", "commissionRate": 0.05, "category": "Villa booking", "grossAmount": 96000.0, "netAmount": 91200.0, "currency": "USD", "notes": "Check nights: Excel says 10, the dates give 12"}, {"id": "bi-25", "sector": "business", "owner": "", "date": "2024-12-20", "checkIn": "2024-12-20", "checkOut": "2025-01-03", "clientType": "paying", "client": "Hue Lane", "villa": "Elu", "nights": 14, "pricePerNight": null, "platform": "freddie luxery travel", "commissionRate": 0.15, "category": "Villa booking", "grossAmount": 78120.0, "netAmount": 66402.0, "currency": "USD", "notes": ""}, {"id": "bi-26", "sector": "business", "owner": "", "date": "2025-01-10", "checkIn": "2025-01-10", "checkOut": "2025-02-02", "clientType": "paying", "client": "Jack Mallers", "villa": "Elu", "nights": 24, "pricePerNight": null, "platform": "airbnb + direct", "commissionRate": null, "category": "Villa booking", "grossAmount": 60000.0, "netAmount": 60000.0, "currency": "USD", "notes": "Check nights: Excel says 24, the dates give 23"}, {"id": "bi-27", "sector": "business", "owner": "", "date": "2025-02-10", "checkIn": "2025-02-10", "checkOut": "2025-03-10", "clientType": "paying", "client": "Darius", "villa": "Nalani", "nights": 28, "pricePerNight": null, "platform": "direct", "commissionRate": null, "category": "Villa booking", "grossAmount": 60000.0, "netAmount": 60000.0, "currency": "USD", "notes": "Excel col J (no header): 58000"}, {"id": "bi-28", "sector": "business", "owner": "", "date": "2025-03-15", "checkIn": "2025-03-15", "checkOut": "2025-03-22", "clientType": "paying", "client": "Giacomo Maroni", "villa": "Nalani", "nights": 7, "pricePerNight": null, "platform": "airbnb", "commissionRate": null, "category": "Villa booking", "grossAmount": 18000.0, "netAmount": 18000.0, "currency": "USD", "notes": ""}, {"id": "bi-29", "sector": "business", "owner": "", "date": "2025-04-10", "checkIn": "2025-04-10", "checkOut": "2025-04-17", "clientType": "paying", "client": "Leo", "villa": "Nalani", "nights": 7, "pricePerNight": null, "platform": "romi", "commissionRate": null, "category": "Villa booking", "grossAmount": 10000.0, "netAmount": 10000.0, "currency": "USD", "notes": ""}, {"id": "bi-30", "sector": "business", "owner": "", "date": "2025-04-11", "checkIn": "2025-04-11", "checkOut": "2025-04-16", "clientType": "paying", "client": "Jose Gonzalez", "villa": "Elu", "nights": 5, "pricePerNight": null, "platform": "airbnb", "commissionRate": null, "category": "Villa booking", "grossAmount": 12000.0, "netAmount": 12000.0, "currency": "USD", "notes": ""}, {"id": "bi-31", "sector": "business", "owner": "", "date": "2025-05-18", "checkIn": "2025-05-18", "checkOut": "2025-05-22", "clientType": "paying", "client": "Rachel Day", "villa": "Elu", "nights": 4, "pricePerNight": null, "platform": "airbnb", "commissionRate": null, "category": "Villa booking", "grossAmount": 6500.0, "netAmount": 6500.0, "currency": "USD", "notes": ""}, {"id": "bi-32", "sector": "business", "owner": "", "date": "2025-06-30", "checkIn": "2025-06-30", "checkOut": "2025-07-06", "clientType": "paying", "client": "Grace Byrd", "villa": "Elu", "nights": 6, "pricePerNight": null, "platform": "vrbo", "commissionRate": null, "category": "Villa booking", "grossAmount": 15691.0, "netAmount": 15691.0, "currency": "USD", "notes": ""}, {"id": "bi-33", "sector": "business", "owner": "", "date": "2025-07-14", "checkIn": "2025-07-14", "checkOut": "2025-07-17", "clientType": "paying", "client": "Joe", "villa": "Elu", "nights": 3, "pricePerNight": null, "platform": "direct", "commissionRate": null, "category": "Villa booking", "grossAmount": 3000.0, "netAmount": 3000.0, "currency": "USD", "notes": ""}, {"id": "bi-34", "sector": "business", "owner": "", "date": "2025-07-19", "checkIn": "2025-07-19", "checkOut": "2025-07-26", "clientType": "paying", "client": "Koby Conrad", "villa": "Nalani", "nights": 7, "pricePerNight": null, "platform": "airbnb", "commissionRate": null, "category": "Villa booking", "grossAmount": 16000.0, "netAmount": 16000.0, "currency": "USD", "notes": ""}, {"id": "bi-35", "sector": "business", "owner": "", "date": "2025-07-25", "checkIn": "2025-07-25", "checkOut": "2025-07-28", "clientType": "paying", "client": "Davis", "villa": "Elu", "nights": 3, "pricePerNight": null, "platform": "direct", "commissionRate": null, "category": "Villa booking", "grossAmount": 3000.0, "netAmount": 3000.0, "currency": "USD", "notes": ""}, {"id": "bi-36", "sector": "business", "owner": "", "date": "2025-08-18", "checkIn": "2025-08-18", "checkOut": "2025-08-22", "clientType": "paying", "client": "Clara", "villa": "Elu", "nights": 4, "pricePerNight": null, "platform": "airbnb", "commissionRate": null, "category": "Villa booking", "grossAmount": 7000.0, "netAmount": 7000.0, "currency": "USD", "notes": ""}, {"id": "bi-37", "sector": "business", "owner": "", "date": "2025-11-06", "checkIn": "2025-11-06", "checkOut": "2025-12-15", "clientType": "paying", "client": "Rishi Bajaj", "villa": "Nalani", "nights": 38, "pricePerNight": null, "platform": "lee", "commissionRate": 0.045, "category": "Villa booking", "grossAmount": 77292.0, "netAmount": 73813.86, "currency": "USD", "notes": "Check nights: Excel says 38, the dates give 39 | Excel col J (no header): 72500"}, {"id": "bi-38", "sector": "business", "owner": "", "date": "2025-11-18", "checkIn": "2025-11-18", "checkOut": "2025-11-23", "clientType": "paying", "client": "Tiffaney And Tom", "villa": "Elu", "nights": 5, "pricePerNight": null, "platform": "brett", "commissionRate": 0.1, "category": "Villa booking", "grossAmount": 14690.0, "netAmount": 13221.0, "currency": "USD", "notes": "Excel col J (no header): 13390"}, {"id": "bi-39", "sector": "business", "owner": "", "date": "2025-12-19", "checkIn": "2025-12-19", "checkOut": "2025-12-26", "clientType": "paying", "client": "Maria Fernendaz", "villa": "Nalani", "nights": 7, "pricePerNight": null, "platform": "my private villas", "commissionRate": 0.15, "category": "Villa booking", "grossAmount": 56048.0, "netAmount": 47640.8, "currency": "USD", "notes": "Excel col J (no header): 48608"}, {"id": "bi-40", "sector": "business", "owner": "", "date": "2025-12-19", "checkIn": "2025-12-19", "checkOut": "2025-12-24", "clientType": "paying", "client": "Adam Kelly", "villa": "Elu", "nights": 5, "pricePerNight": null, "platform": "frederick soutbys", "commissionRate": 0.1, "category": "Villa booking", "grossAmount": 22600.0, "netAmount": 20340.0, "currency": "USD", "notes": "Excel col J (no header): 20600"}, {"id": "bi-41", "sector": "business", "owner": "", "date": "2025-12-26", "checkIn": "2025-12-26", "checkOut": "2026-01-05", "clientType": "paying", "client": "Vip Clients New Years", "villa": "Elu + Nalani", "nights": 10, "pricePerNight": null, "platform": "journey", "commissionRate": 0.15, "category": "Villa booking", "grossAmount": 181000.0, "netAmount": 153850.0, "currency": "USD", "notes": ""}, {"id": "bi-42", "sector": "business", "owner": "", "date": "2025-11-23", "checkIn": "2025-11-23", "checkOut": "2025-11-30", "clientType": "paying", "client": "Yasmine", "villa": "Elu", "nights": 7, "pricePerNight": null, "platform": "airbnb", "commissionRate": null, "category": "Villa booking", "grossAmount": 21800.0, "netAmount": 21800.0, "currency": "USD", "notes": ""}, {"id": "bi-43", "sector": "business", "owner": "", "date": "2026-01-07", "checkIn": "2026-01-07", "checkOut": "2026-01-14", "clientType": "paying", "client": "Mario", "villa": "Nalani", "nights": 7, "pricePerNight": null, "platform": "direct", "commissionRate": null, "category": "Villa booking", "grossAmount": 28000.0, "netAmount": 28000.0, "currency": "USD", "notes": ""}, {"id": "bi-44", "sector": "business", "owner": "", "date": "2026-01-05", "checkIn": "2026-01-05", "checkOut": "2026-01-18", "clientType": "paying", "client": "Axel", "villa": "Elu", "nights": 13, "pricePerNight": null, "platform": "lee", "commissionRate": 0.1, "category": "Villa booking", "grossAmount": 27900.0, "netAmount": 25110.0, "currency": "USD", "notes": "Excel col J (no header): 25000"}, {"id": "bi-45", "sector": "business", "owner": "", "date": "2026-03-30", "checkIn": "2026-03-30", "checkOut": "2026-04-06", "clientType": "paying", "client": "Nofar", "villa": "Nalani", "nights": 6, "pricePerNight": null, "platform": "direct", "commissionRate": null, "category": "Villa booking", "grossAmount": 22000.0, "netAmount": 22000.0, "currency": "USD", "notes": "Check nights: Excel says 6, the dates give 7"}, {"id": "bi-46", "sector": "business", "owner": "", "date": "2026-01-28", "checkIn": "2026-01-28", "checkOut": "2026-02-21", "clientType": "paying", "client": "Yan", "villa": "Nalani", "nights": 22, "pricePerNight": null, "platform": "direct", "commissionRate": null, "category": "Villa booking", "grossAmount": 65000.0, "netAmount": 65000.0, "currency": "USD", "notes": "Check nights: Excel says 22, the dates give 24"}, {"id": "bi-47", "sector": "business", "owner": "", "date": "2026-02-12", "checkIn": "2026-02-12", "checkOut": "2026-02-15", "clientType": "paying", "client": "Jonathan", "villa": "Elu", "nights": 3, "pricePerNight": null, "platform": "airbnb", "commissionRate": null, "category": "Villa booking", "grossAmount": 7497.0, "netAmount": 7497.0, "currency": "USD", "notes": "Excel col J (no header): 8600"}, {"id": "bi-48", "sector": "business", "owner": "", "date": "2026-02-15", "checkIn": "2026-02-15", "checkOut": "2026-02-24", "clientType": "paying", "client": "Mariana", "villa": "Elu", "nights": 9, "pricePerNight": null, "platform": "airbnb", "commissionRate": null, "category": "Villa booking", "grossAmount": 21929.0, "netAmount": 21929.0, "currency": "USD", "notes": "Excel col J (no header): 25301"}, {"id": "bi-49", "sector": "business", "owner": "", "date": "2026-03-15", "checkIn": "2026-03-15", "checkOut": "2026-03-19", "clientType": "paying", "client": "Chase", "villa": "Elu", "nights": 4, "pricePerNight": null, "platform": "airbnb", "commissionRate": 0.15, "category": "Villa booking", "grossAmount": 9707.0, "netAmount": 8250.95, "currency": "USD", "notes": "Excel col J (no header): 11256"}, {"id": "bi-50", "sector": "business", "owner": "", "date": "2026-03-16", "checkIn": "2026-03-16", "checkOut": "2026-03-21", "clientType": "paying", "client": "Mark", "villa": "Elu", "nights": 5, "pricePerNight": null, "platform": "airbnb", "commissionRate": null, "category": "Villa booking", "grossAmount": 11936.0, "netAmount": 11936.0, "currency": "USD", "notes": ""}, {"id": "bi-51", "sector": "business", "owner": "", "date": "2026-04-04", "checkIn": "2026-04-04", "checkOut": "2026-04-12", "clientType": "paying", "client": "Offer", "villa": "Elu", "nights": 8, "pricePerNight": null, "platform": "airbnb", "commissionRate": null, "category": "Villa booking", "grossAmount": 13970.0, "netAmount": 13970.0, "currency": "USD", "notes": ""}, {"id": "bi-52", "sector": "business", "owner": "", "date": "2026-04-11", "checkIn": "2026-04-11", "checkOut": "2026-04-15", "clientType": "paying", "client": "Joshua Morris", "villa": "Nalani", "nights": 4, "pricePerNight": null, "platform": "airbnb", "commissionRate": null, "category": "Villa booking", "grossAmount": 13591.0, "netAmount": 13591.0, "currency": "USD", "notes": "Excel col J (no header): 16112"}, {"id": "bi-53", "sector": "business", "owner": "", "date": "2026-05-14", "checkIn": "2026-05-14", "checkOut": "2026-05-17", "clientType": "paying", "client": "Ford", "villa": "Elu + Nalani", "nights": 3, "pricePerNight": null, "platform": "airbnb", "commissionRate": 0.15, "category": "Villa booking", "grossAmount": 14797.0, "netAmount": 12577.45, "currency": "USD", "notes": "Excel col J (no header): 17160"}, {"id": "bi-54", "sector": "business", "owner": "", "date": "2026-05-21", "checkIn": "2026-05-21", "checkOut": "2026-05-25", "clientType": "paying", "client": "Chirag", "villa": "Elu + Nalani", "nights": 4, "pricePerNight": null, "platform": "airbnb", "commissionRate": 0.15, "category": "Villa booking", "grossAmount": 15952.0, "netAmount": 13559.2, "currency": "USD", "notes": "Excel col J (no header): 18500"}, {"id": "bi-55", "sector": "business", "owner": "", "date": "2026-05-01", "checkIn": "2026-05-01", "checkOut": "2026-05-11", "clientType": "paying", "client": "Bruno", "villa": "Elu + Nalani", "nights": 10, "pricePerNight": null, "platform": "direct", "commissionRate": null, "category": "Villa booking", "grossAmount": 34000.0, "netAmount": 34000.0, "currency": "USD", "notes": "Excel date text says 2025 but its year column says 2026 — used 2026"}, {"id": "bi-56", "sector": "business", "owner": "", "date": "2026-07-18", "checkIn": "2026-07-18", "checkOut": "2026-07-25", "clientType": "paying", "client": "Chekesha", "villa": "Elu + Nalani", "nights": 7, "pricePerNight": null, "platform": "airbnb + direct", "commissionRate": null, "category": "Villa booking", "grossAmount": 27900.0, "netAmount": 27900.0, "currency": "USD", "notes": ""}, {"id": "bi-57", "sector": "business", "owner": "", "date": "2026-07-29", "checkIn": "2026-07-29", "checkOut": "2026-08-08", "clientType": "paying", "client": "Aimee Gallagher", "villa": "Nalani", "nights": 10, "pricePerNight": null, "platform": "isle blue", "commissionRate": null, "category": "Villa booking", "grossAmount": 26000.0, "netAmount": 26000.0, "currency": "USD", "notes": ""}, {"id": "pi-58", "sector": "personal", "date": "2025-08-01", "client": "", "villa": "", "nights": null, "pricePerNight": null, "platform": "", "commissionRate": null, "category": "Salary", "grossAmount": 3000, "netAmount": 3000, "currency": "ILS", "notes": "", "owner": "", "checkIn": "", "checkOut": "", "clientType": "paying"}, {"id": "pi-59", "sector": "personal", "date": "2025-09-01", "client": "", "villa": "", "nights": null, "pricePerNight": null, "platform": "", "commissionRate": null, "category": "Salary", "grossAmount": 3000, "netAmount": 3000, "currency": "ILS", "notes": "", "owner": "", "checkIn": "", "checkOut": "", "clientType": "paying"}, {"id": "pi-60", "sector": "personal", "date": "2025-10-01", "client": "", "villa": "", "nights": null, "pricePerNight": null, "platform": "", "commissionRate": null, "category": "Salary", "grossAmount": 3000, "netAmount": 3000, "currency": "ILS", "notes": "", "owner": "", "checkIn": "", "checkOut": "", "clientType": "paying"}, {"id": "pi-61", "sector": "personal", "date": "2025-11-01", "client": "", "villa": "", "nights": null, "pricePerNight": null, "platform": "", "commissionRate": null, "category": "Salary", "grossAmount": 3000, "netAmount": 3000, "currency": "ILS", "notes": "", "owner": "", "checkIn": "", "checkOut": "", "clientType": "paying"}, {"id": "pi-62", "sector": "personal", "date": "2025-12-01", "client": "", "villa": "", "nights": null, "pricePerNight": null, "platform": "", "commissionRate": null, "category": "Salary", "grossAmount": 3000, "netAmount": 3000, "currency": "ILS", "notes": "", "owner": "", "checkIn": "", "checkOut": "", "clientType": "paying"}, {"id": "pi-63", "sector": "personal", "date": "2026-01-01", "client": "", "villa": "", "nights": null, "pricePerNight": null, "platform": "", "commissionRate": null, "category": "Salary", "grossAmount": 3000, "netAmount": 3000, "currency": "ILS", "notes": "", "owner": "", "checkIn": "", "checkOut": "", "clientType": "paying"}, {"id": "pi-64", "sector": "personal", "date": "2026-02-01", "client": "", "villa": "", "nights": null, "pricePerNight": null, "platform": "", "commissionRate": null, "category": "Salary", "grossAmount": 3000, "netAmount": 3000, "currency": "ILS", "notes": "", "owner": "", "checkIn": "", "checkOut": "", "clientType": "paying"}], "expenseRecords": [{"id": "exp-1", "sector": "business", "date": "2025-08-01", "group": "Magna Pacific", "category": "Mortgage/Rent", "amount": 16000, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-2", "sector": "business", "date": "2025-09-01", "group": "Magna Pacific", "category": "Mortgage/Rent", "amount": 15700, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-3", "sector": "business", "date": "2025-10-01", "group": "Magna Pacific", "category": "Mortgage/Rent", "amount": 15250, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-4", "sector": "business", "date": "2025-11-01", "group": "Magna Pacific", "category": "Mortgage/Rent", "amount": 15314, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-5", "sector": "business", "date": "2025-12-01", "group": "Magna Pacific", "category": "Mortgage/Rent", "amount": 14986, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-6", "sector": "business", "date": "2026-01-01", "group": "Magna Pacific", "category": "Mortgage/Rent", "amount": 14900, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-7", "sector": "business", "date": "2026-02-01", "group": "Magna Pacific", "category": "Mortgage/Rent", "amount": 14900, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-8", "sector": "business", "date": "2026-06-01", "group": "Magna Pacific", "category": "Mortgage/Rent", "amount": 14900, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-9", "sector": "business", "date": "2026-09-01", "group": "Magna Pacific", "category": "Mortgage/Rent", "amount": 14600, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-10", "sector": "business", "date": "2025-08-01", "group": "Magna Pacific", "category": "aya water both villas", "amount": 1800, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-11", "sector": "business", "date": "2025-09-01", "group": "Magna Pacific", "category": "aya water both villas", "amount": 957, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-12", "sector": "business", "date": "2025-10-01", "group": "Magna Pacific", "category": "aya water both villas", "amount": 526, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-13", "sector": "business", "date": "2025-11-01", "group": "Magna Pacific", "category": "aya water both villas", "amount": 1000, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-14", "sector": "business", "date": "2026-01-01", "group": "Magna Pacific", "category": "aya water both villas", "amount": 2100, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-15", "sector": "business", "date": "2026-02-01", "group": "Magna Pacific", "category": "aya water both villas", "amount": 1200, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-16", "sector": "business", "date": "2026-06-01", "group": "Magna Pacific", "category": "aya water both villas", "amount": 900, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-17", "sector": "business", "date": "2025-09-01", "group": "Magna Pacific", "category": "Electricity", "amount": 1700, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-18", "sector": "business", "date": "2025-10-01", "group": "Magna Pacific", "category": "Electricity", "amount": 1900, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-19", "sector": "business", "date": "2025-11-01", "group": "Magna Pacific", "category": "Electricity", "amount": 1429, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-20", "sector": "business", "date": "2025-12-01", "group": "Magna Pacific", "category": "Electricity", "amount": 1000, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-21", "sector": "business", "date": "2026-01-01", "group": "Magna Pacific", "category": "Electricity", "amount": 2000, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-22", "sector": "business", "date": "2026-02-01", "group": "Magna Pacific", "category": "Electricity", "amount": 1790, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-23", "sector": "business", "date": "2026-06-01", "group": "Magna Pacific", "category": "Electricity", "amount": 1200, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-24", "sector": "business", "date": "2025-08-01", "group": "Magna Pacific", "category": "ccss", "amount": 1070, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-25", "sector": "business", "date": "2025-09-01", "group": "Magna Pacific", "category": "ccss", "amount": 1070, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-26", "sector": "business", "date": "2025-10-01", "group": "Magna Pacific", "category": "ccss", "amount": 1070, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-27", "sector": "business", "date": "2025-11-01", "group": "Magna Pacific", "category": "ccss", "amount": 1100, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-28", "sector": "business", "date": "2025-12-01", "group": "Magna Pacific", "category": "ccss", "amount": 850, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-29", "sector": "business", "date": "2026-01-01", "group": "Magna Pacific", "category": "ccss", "amount": 780, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-30", "sector": "business", "date": "2026-02-01", "group": "Magna Pacific", "category": "ccss", "amount": 780, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-31", "sector": "business", "date": "2026-06-01", "group": "Magna Pacific", "category": "ccss", "amount": 700, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-32", "sector": "business", "date": "2025-08-01", "group": "Magna Pacific", "category": "accounting", "amount": 340, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-33", "sector": "business", "date": "2025-09-01", "group": "Magna Pacific", "category": "accounting", "amount": 340, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-34", "sector": "business", "date": "2025-10-01", "group": "Magna Pacific", "category": "accounting", "amount": 340, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-35", "sector": "business", "date": "2025-11-01", "group": "Magna Pacific", "category": "accounting", "amount": 340, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-36", "sector": "business", "date": "2025-12-01", "group": "Magna Pacific", "category": "accounting", "amount": 340, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-37", "sector": "business", "date": "2026-01-01", "group": "Magna Pacific", "category": "accounting", "amount": 340, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-38", "sector": "business", "date": "2026-02-01", "group": "Magna Pacific", "category": "accounting", "amount": 340, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-39", "sector": "business", "date": "2026-06-01", "group": "Magna Pacific", "category": "accounting", "amount": 340, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-40", "sector": "business", "date": "2025-08-01", "group": "Magna Pacific", "category": "daiana", "amount": 2000, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-41", "sector": "business", "date": "2025-09-01", "group": "Magna Pacific", "category": "daiana", "amount": 2000, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-42", "sector": "business", "date": "2025-10-01", "group": "Magna Pacific", "category": "daiana", "amount": 2000, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-43", "sector": "business", "date": "2025-11-01", "group": "Magna Pacific", "category": "daiana", "amount": 2000, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-44", "sector": "business", "date": "2025-12-01", "group": "Magna Pacific", "category": "daiana", "amount": 4000, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-45", "sector": "business", "date": "2026-01-01", "group": "Magna Pacific", "category": "daiana", "amount": 2500, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-46", "sector": "business", "date": "2026-02-01", "group": "Magna Pacific", "category": "daiana", "amount": 2000, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-47", "sector": "business", "date": "2026-06-01", "group": "Magna Pacific", "category": "daiana", "amount": 2000, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-48", "sector": "business", "date": "2026-07-01", "group": "Magna Pacific", "category": "daiana", "amount": 2000, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-49", "sector": "business", "date": "2026-08-01", "group": "Magna Pacific", "category": "daiana", "amount": 2000, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-50", "sector": "business", "date": "2026-09-01", "group": "Magna Pacific", "category": "daiana", "amount": 2000, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-51", "sector": "business", "date": "2025-08-01", "group": "Magna Pacific", "category": "Internet", "amount": 254, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-52", "sector": "business", "date": "2025-09-01", "group": "Magna Pacific", "category": "Internet", "amount": 254, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-53", "sector": "business", "date": "2025-10-01", "group": "Magna Pacific", "category": "Internet", "amount": 254, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-54", "sector": "business", "date": "2025-11-01", "group": "Magna Pacific", "category": "Internet", "amount": 254, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-55", "sector": "business", "date": "2025-12-01", "group": "Magna Pacific", "category": "Internet", "amount": 254, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-56", "sector": "business", "date": "2026-01-01", "group": "Magna Pacific", "category": "Internet", "amount": 254, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-57", "sector": "business", "date": "2026-02-01", "group": "Magna Pacific", "category": "Internet", "amount": 254, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-58", "sector": "business", "date": "2026-06-01", "group": "Magna Pacific", "category": "Internet", "amount": 254, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-59", "sector": "business", "date": "2026-07-01", "group": "Magna Pacific", "category": "Internet", "amount": 254, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-60", "sector": "business", "date": "2026-08-01", "group": "Magna Pacific", "category": "Internet", "amount": 254, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-61", "sector": "business", "date": "2026-09-01", "group": "Magna Pacific", "category": "Internet", "amount": 254, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-62", "sector": "business", "date": "2025-08-01", "group": "Magna Pacific", "category": "instagram", "amount": 750, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-63", "sector": "business", "date": "2025-09-01", "group": "Magna Pacific", "category": "instagram", "amount": 750, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-64", "sector": "business", "date": "2025-10-01", "group": "Magna Pacific", "category": "instagram", "amount": 750, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-65", "sector": "business", "date": "2025-11-01", "group": "Magna Pacific", "category": "instagram", "amount": 800, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-66", "sector": "business", "date": "2025-12-01", "group": "Magna Pacific", "category": "instagram", "amount": 750, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-67", "sector": "business", "date": "2026-01-01", "group": "Magna Pacific", "category": "instagram", "amount": 750, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-68", "sector": "business", "date": "2026-02-01", "group": "Magna Pacific", "category": "instagram", "amount": 750, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-69", "sector": "business", "date": "2026-06-01", "group": "Magna Pacific", "category": "instagram", "amount": 830, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-70", "sector": "business", "date": "2026-07-01", "group": "Magna Pacific", "category": "instagram", "amount": 400, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-71", "sector": "business", "date": "2026-08-01", "group": "Magna Pacific", "category": "instagram", "amount": 400, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-72", "sector": "business", "date": "2026-09-01", "group": "Magna Pacific", "category": "instagram", "amount": 400, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-73", "sector": "business", "date": "2025-08-01", "group": "Magna Pacific", "category": "gas", "amount": 200, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-74", "sector": "business", "date": "2025-09-01", "group": "Magna Pacific", "category": "gas", "amount": 200, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-75", "sector": "business", "date": "2025-10-01", "group": "Magna Pacific", "category": "gas", "amount": 200, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-76", "sector": "business", "date": "2025-11-01", "group": "Magna Pacific", "category": "gas", "amount": 200, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-77", "sector": "business", "date": "2025-12-01", "group": "Magna Pacific", "category": "gas", "amount": 200, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-78", "sector": "business", "date": "2026-01-01", "group": "Magna Pacific", "category": "gas", "amount": 200, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-79", "sector": "business", "date": "2026-02-01", "group": "Magna Pacific", "category": "gas", "amount": 200, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-80", "sector": "business", "date": "2026-06-01", "group": "Magna Pacific", "category": "gas", "amount": 200, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-81", "sector": "business", "date": "2025-08-01", "group": "Magna Pacific", "category": "workers pay", "amount": 3728, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-82", "sector": "business", "date": "2025-09-01", "group": "Magna Pacific", "category": "workers pay", "amount": 3728, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-83", "sector": "business", "date": "2025-10-01", "group": "Magna Pacific", "category": "workers pay", "amount": 3728, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-84", "sector": "business", "date": "2025-11-01", "group": "Magna Pacific", "category": "workers pay", "amount": 3728, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-85", "sector": "business", "date": "2025-12-01", "group": "Magna Pacific", "category": "workers pay", "amount": 8500, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-86", "sector": "business", "date": "2026-01-01", "group": "Magna Pacific", "category": "workers pay", "amount": 3728, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-87", "sector": "business", "date": "2026-02-01", "group": "Magna Pacific", "category": "workers pay", "amount": 3728, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-88", "sector": "business", "date": "2026-06-01", "group": "Magna Pacific", "category": "workers pay", "amount": 3728, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-89", "sector": "business", "date": "2025-08-01", "group": "Magna Pacific", "category": "gas for car", "amount": 150, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-90", "sector": "business", "date": "2025-09-01", "group": "Magna Pacific", "category": "gas for car", "amount": 150, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-91", "sector": "business", "date": "2025-10-01", "group": "Magna Pacific", "category": "gas for car", "amount": 150, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-92", "sector": "business", "date": "2025-11-01", "group": "Magna Pacific", "category": "gas for car", "amount": 150, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-93", "sector": "business", "date": "2025-12-01", "group": "Magna Pacific", "category": "gas for car", "amount": 150, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-94", "sector": "business", "date": "2026-01-01", "group": "Magna Pacific", "category": "gas for car", "amount": 150, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-95", "sector": "business", "date": "2026-02-01", "group": "Magna Pacific", "category": "gas for car", "amount": 150, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-96", "sector": "business", "date": "2026-06-01", "group": "Magna Pacific", "category": "gas for car", "amount": 150, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-97", "sector": "business", "date": "2025-11-01", "group": "Magna Pacific", "category": "Repairs", "amount": 9000, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-98", "sector": "business", "date": "2026-01-01", "group": "Magna Pacific", "category": "Repairs", "amount": 2000, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-99", "sector": "business", "date": "2025-09-01", "group": "Magna Pacific", "category": "Other", "amount": 907, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-100", "sector": "business", "date": "2025-10-01", "group": "Magna Pacific", "category": "Other", "amount": 8000, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-101", "sector": "business", "date": "2025-11-01", "group": "Magna Pacific", "category": "Other", "amount": 4500, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-102", "sector": "business", "date": "2025-12-01", "group": "Magna Pacific", "category": "Other", "amount": 2000, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-103", "sector": "business", "date": "2026-01-01", "group": "Magna Pacific", "category": "Other", "amount": 4000, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-104", "sector": "business", "date": "2026-02-01", "group": "Magna Pacific", "category": "Other", "amount": 3000, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-105", "sector": "business", "date": "2026-06-01", "group": "Magna Pacific", "category": "Other", "amount": 3000, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-106", "sector": "personal", "date": "2025-08-01", "group": "Mal Pais / Hermosa (CR residence)", "category": "rent", "amount": 2600, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-107", "sector": "personal", "date": "2025-09-01", "group": "Mal Pais / Hermosa (CR residence)", "category": "rent", "amount": 2600, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-108", "sector": "personal", "date": "2025-10-01", "group": "Mal Pais / Hermosa (CR residence)", "category": "rent", "amount": 1400, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-109", "sector": "personal", "date": "2025-11-01", "group": "Mal Pais / Hermosa (CR residence)", "category": "rent", "amount": 1400, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-110", "sector": "personal", "date": "2025-12-01", "group": "Mal Pais / Hermosa (CR residence)", "category": "rent", "amount": 1400, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-111", "sector": "personal", "date": "2026-01-01", "group": "Mal Pais / Hermosa (CR residence)", "category": "rent", "amount": 1400, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-112", "sector": "personal", "date": "2026-02-01", "group": "Mal Pais / Hermosa (CR residence)", "category": "rent", "amount": 1400, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-113", "sector": "personal", "date": "2026-06-01", "group": "Mal Pais / Hermosa (CR residence)", "category": "rent", "amount": 1200, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-114", "sector": "personal", "date": "2025-08-01", "group": "Mal Pais / Hermosa (CR residence)", "category": "condominum payment", "amount": 260, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-115", "sector": "personal", "date": "2025-09-01", "group": "Mal Pais / Hermosa (CR residence)", "category": "condominum payment", "amount": 260, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-116", "sector": "personal", "date": "2025-10-01", "group": "Mal Pais / Hermosa (CR residence)", "category": "condominum payment", "amount": 260, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-117", "sector": "personal", "date": "2025-08-01", "group": "Mal Pais / Hermosa (CR residence)", "category": "water", "amount": 112, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-118", "sector": "personal", "date": "2025-09-01", "group": "Mal Pais / Hermosa (CR residence)", "category": "water", "amount": 58, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-119", "sector": "personal", "date": "2025-08-01", "group": "Mal Pais / Hermosa (CR residence)", "category": "electricity", "amount": 424, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-120", "sector": "personal", "date": "2025-09-01", "group": "Mal Pais / Hermosa (CR residence)", "category": "electricity", "amount": 371, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-121", "sector": "personal", "date": "2025-10-01", "group": "Mal Pais / Hermosa (CR residence)", "category": "electricity", "amount": 270, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-122", "sector": "personal", "date": "2025-11-01", "group": "Mal Pais / Hermosa (CR residence)", "category": "electricity", "amount": 40, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-123", "sector": "personal", "date": "2025-08-01", "group": "Mal Pais / Hermosa (CR residence)", "category": "internet", "amount": 54, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-124", "sector": "personal", "date": "2025-09-01", "group": "Mal Pais / Hermosa (CR residence)", "category": "internet", "amount": 54, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-125", "sector": "personal", "date": "2025-10-01", "group": "Mal Pais / Hermosa (CR residence)", "category": "internet", "amount": 54, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-126", "sector": "personal", "date": "2025-11-01", "group": "Mal Pais / Hermosa (CR residence)", "category": "Other", "amount": 1000, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-127", "sector": "personal", "date": "2025-12-01", "group": "Mal Pais / Hermosa (CR residence)", "category": "Other", "amount": 1000, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-128", "sector": "personal", "date": "2026-01-01", "group": "Mal Pais / Hermosa (CR residence)", "category": "Other", "amount": 1000, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-129", "sector": "personal", "date": "2026-06-01", "group": "Mal Pais / Hermosa (CR residence)", "category": "Other", "amount": 600, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-130", "sector": "personal", "date": "2025-08-01", "group": "Israel", "category": "rent", "amount": 1500, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-131", "sector": "personal", "date": "2025-09-01", "group": "Israel", "category": "rent", "amount": 1500, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-132", "sector": "personal", "date": "2025-10-01", "group": "Israel", "category": "rent", "amount": 1500, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-133", "sector": "personal", "date": "2025-11-01", "group": "Israel", "category": "rent", "amount": 1700, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-134", "sector": "personal", "date": "2025-12-01", "group": "Israel", "category": "rent", "amount": 1700, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-135", "sector": "personal", "date": "2026-01-01", "group": "Israel", "category": "rent", "amount": 1700, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-136", "sector": "personal", "date": "2026-02-01", "group": "Israel", "category": "rent", "amount": 1700, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-137", "sector": "personal", "date": "2026-06-01", "group": "Israel", "category": "rent", "amount": 2500, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-138", "sector": "personal", "date": "2026-07-01", "group": "Israel", "category": "rent", "amount": 2500, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-139", "sector": "personal", "date": "2026-08-01", "group": "Israel", "category": "rent", "amount": 2500, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-140", "sector": "personal", "date": "2026-09-01", "group": "Israel", "category": "rent", "amount": 2500, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-141", "sector": "personal", "date": "2025-08-01", "group": "Israel", "category": "electricity", "amount": 100, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-142", "sector": "personal", "date": "2025-09-01", "group": "Israel", "category": "electricity", "amount": 100, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-143", "sector": "personal", "date": "2025-10-01", "group": "Israel", "category": "electricity", "amount": 100, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-144", "sector": "personal", "date": "2026-06-01", "group": "Israel", "category": "electricity", "amount": 100, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-145", "sector": "personal", "date": "2026-07-01", "group": "Israel", "category": "electricity", "amount": 300, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-146", "sector": "personal", "date": "2026-08-01", "group": "Israel", "category": "electricity", "amount": 300, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-147", "sector": "personal", "date": "2026-09-01", "group": "Israel", "category": "electricity", "amount": 300, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-148", "sector": "personal", "date": "2025-08-01", "group": "Israel", "category": "car gasoline", "amount": 400, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-149", "sector": "personal", "date": "2025-09-01", "group": "Israel", "category": "car gasoline", "amount": 400, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-150", "sector": "personal", "date": "2025-10-01", "group": "Israel", "category": "car gasoline", "amount": 400, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-151", "sector": "personal", "date": "2025-11-01", "group": "Israel", "category": "car gasoline", "amount": 200, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-152", "sector": "personal", "date": "2025-12-01", "group": "Israel", "category": "car gasoline", "amount": 200, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-153", "sector": "personal", "date": "2026-01-01", "group": "Israel", "category": "car gasoline", "amount": 200, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-154", "sector": "personal", "date": "2026-02-01", "group": "Israel", "category": "car gasoline", "amount": 200, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-155", "sector": "personal", "date": "2026-06-01", "group": "Israel", "category": "car gasoline", "amount": 200, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-156", "sector": "personal", "date": "2026-07-01", "group": "Israel", "category": "car gasoline", "amount": 200, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-157", "sector": "personal", "date": "2026-08-01", "group": "Israel", "category": "car gasoline", "amount": 200, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-158", "sector": "personal", "date": "2026-09-01", "group": "Israel", "category": "car gasoline", "amount": 200, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-159", "sector": "personal", "date": "2025-08-01", "group": "Israel", "category": "food", "amount": 1000, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-160", "sector": "personal", "date": "2025-09-01", "group": "Israel", "category": "food", "amount": 1000, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-161", "sector": "personal", "date": "2025-10-01", "group": "Israel", "category": "food", "amount": 1000, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-162", "sector": "personal", "date": "2025-11-01", "group": "Israel", "category": "food", "amount": 1000, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-163", "sector": "personal", "date": "2025-12-01", "group": "Israel", "category": "food", "amount": 1000, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-164", "sector": "personal", "date": "2026-01-01", "group": "Israel", "category": "food", "amount": 1000, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-165", "sector": "personal", "date": "2026-02-01", "group": "Israel", "category": "food", "amount": 1000, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-166", "sector": "personal", "date": "2026-06-01", "group": "Israel", "category": "food", "amount": 1000, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-167", "sector": "personal", "date": "2026-07-01", "group": "Israel", "category": "food", "amount": 1000, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-168", "sector": "personal", "date": "2026-08-01", "group": "Israel", "category": "food", "amount": 1000, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-169", "sector": "personal", "date": "2026-09-01", "group": "Israel", "category": "food", "amount": 1000, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-170", "sector": "personal", "date": "2026-06-01", "group": "Israel", "category": "Other", "amount": 1000, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-171", "sector": "personal", "date": "2026-07-01", "group": "Israel", "category": "Other", "amount": 1000, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-172", "sector": "personal", "date": "2026-08-01", "group": "Israel", "category": "Other", "amount": 1000, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-173", "sector": "personal", "date": "2026-09-01", "group": "Israel", "category": "Other", "amount": 1000, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-174", "sector": "personal", "date": "2025-08-01", "group": "Israel", "category": "loans", "amount": 1756, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-175", "sector": "personal", "date": "2025-09-01", "group": "Israel", "category": "loans", "amount": 1756, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-176", "sector": "personal", "date": "2025-10-01", "group": "Israel", "category": "loans", "amount": 1756, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-177", "sector": "personal", "date": "2025-11-01", "group": "Israel", "category": "loans", "amount": 1756, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-178", "sector": "personal", "date": "2025-12-01", "group": "Israel", "category": "loans", "amount": 1756, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-179", "sector": "personal", "date": "2026-01-01", "group": "Israel", "category": "loans", "amount": 1756, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-180", "sector": "personal", "date": "2026-02-01", "group": "Israel", "category": "loans", "amount": 1756, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-181", "sector": "personal", "date": "2026-06-01", "group": "Israel", "category": "loans", "amount": 1756, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-182", "sector": "personal", "date": "2026-07-01", "group": "Israel", "category": "loans", "amount": 1756, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-183", "sector": "personal", "date": "2026-08-01", "group": "Israel", "category": "loans", "amount": 1756, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-184", "sector": "personal", "date": "2026-09-01", "group": "Israel", "category": "loans", "amount": 1756, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-185", "sector": "personal", "date": "2025-08-01", "group": "Israel", "category": "child care", "amount": 290, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-186", "sector": "personal", "date": "2025-09-01", "group": "Israel", "category": "child care", "amount": 290, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-187", "sector": "personal", "date": "2025-10-01", "group": "Israel", "category": "child care", "amount": 290, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-188", "sector": "personal", "date": "2025-11-01", "group": "Israel", "category": "child care", "amount": 290, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-189", "sector": "personal", "date": "2025-12-01", "group": "Israel", "category": "child care", "amount": 290, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-190", "sector": "personal", "date": "2026-01-01", "group": "Israel", "category": "child care", "amount": 290, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-191", "sector": "personal", "date": "2025-08-01", "group": "Israel", "category": "nitay school", "amount": 1000, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-192", "sector": "personal", "date": "2025-09-01", "group": "Israel", "category": "nitay school", "amount": 1000, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-193", "sector": "personal", "date": "2025-10-01", "group": "Israel", "category": "nitay school", "amount": 1000, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-194", "sector": "personal", "date": "2025-11-01", "group": "Israel", "category": "nitay school", "amount": 1000, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-195", "sector": "personal", "date": "2025-12-01", "group": "Israel", "category": "nitay school", "amount": 1000, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-196", "sector": "personal", "date": "2026-01-01", "group": "Israel", "category": "nitay school", "amount": 1000, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-197", "sector": "personal", "date": "2026-06-01", "group": "Israel", "category": "nitay school", "amount": 830, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-198", "sector": "personal", "date": "2026-07-01", "group": "Israel", "category": "nitay school", "amount": 1000, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-199", "sector": "personal", "date": "2026-08-01", "group": "Israel", "category": "nitay school", "amount": 1000, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-200", "sector": "personal", "date": "2026-09-01", "group": "Israel", "category": "nitay school", "amount": 1000, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-201", "sector": "business", "date": "2025-08-01", "group": "Suppliers", "category": "terra eqipos", "amount": 1000, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-202", "sector": "business", "date": "2025-09-01", "group": "Suppliers", "category": "terra eqipos", "amount": 1000, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-203", "sector": "business", "date": "2025-10-01", "group": "Suppliers", "category": "terra eqipos", "amount": 1000, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-204", "sector": "business", "date": "2025-11-01", "group": "Suppliers", "category": "terra eqipos", "amount": 1000, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-205", "sector": "business", "date": "2025-12-01", "group": "Suppliers", "category": "terra eqipos", "amount": 1000, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-206", "sector": "business", "date": "2026-01-01", "group": "Suppliers", "category": "terra eqipos", "amount": 1000, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-207", "sector": "business", "date": "2026-02-01", "group": "Suppliers", "category": "terra eqipos", "amount": 1000, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-208", "sector": "business", "date": "2025-08-01", "group": "Suppliers", "category": "san miguel", "amount": 500, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-209", "sector": "business", "date": "2025-09-01", "group": "Suppliers", "category": "san miguel", "amount": 500, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-210", "sector": "business", "date": "2025-10-01", "group": "Suppliers", "category": "san miguel", "amount": 500, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-211", "sector": "business", "date": "2025-11-01", "group": "Suppliers", "category": "san miguel", "amount": 500, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-212", "sector": "business", "date": "2025-12-01", "group": "Suppliers", "category": "san miguel", "amount": 500, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-213", "sector": "business", "date": "2026-01-01", "group": "Suppliers", "category": "san miguel", "amount": 500, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-214", "sector": "business", "date": "2026-02-01", "group": "Suppliers", "category": "san miguel", "amount": 500, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-215", "sector": "business", "date": "2026-06-01", "group": "Suppliers", "category": "san miguel", "amount": 500, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-216", "sector": "business", "date": "2026-07-01", "group": "Suppliers", "category": "san miguel", "amount": 500, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-217", "sector": "business", "date": "2026-08-01", "group": "Suppliers", "category": "san miguel", "amount": 500, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-218", "sector": "business", "date": "2026-09-01", "group": "Suppliers", "category": "san miguel", "amount": 500, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-219", "sector": "business", "date": "2025-10-01", "group": "Suppliers", "category": "rafa", "amount": 2000, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-220", "sector": "business", "date": "2026-01-01", "group": "Suppliers", "category": "rafa", "amount": 2000, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-221", "sector": "business", "date": "2026-02-01", "group": "Suppliers", "category": "rafa", "amount": 2000, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-222", "sector": "business", "date": "2026-06-01", "group": "Suppliers", "category": "rafa", "amount": 1000, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-223", "sector": "business", "date": "2026-07-01", "group": "Suppliers", "category": "rafa", "amount": 1000, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-224", "sector": "business", "date": "2026-08-01", "group": "Suppliers", "category": "rafa", "amount": 1000, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-225", "sector": "business", "date": "2026-09-01", "group": "Suppliers", "category": "rafa", "amount": 1000, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-226", "sector": "business", "date": "2025-09-01", "group": "Suppliers", "category": "concept", "amount": 2000, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-227", "sector": "business", "date": "2025-09-01", "group": "Suppliers", "category": "ac", "amount": 2000, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-228", "sector": "business", "date": "2026-01-01", "group": "Suppliers", "category": "ac", "amount": 2000, "currency": "USD", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-229", "sector": "personal", "date": "2025-11-01", "group": "Children", "category": "School / College Expenses", "amount": 650, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-230", "sector": "personal", "date": "2025-12-01", "group": "Children", "category": "School / College Expenses", "amount": 650, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-231", "sector": "personal", "date": "2026-01-01", "group": "Children", "category": "School / College Expenses", "amount": 650, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-232", "sector": "personal", "date": "2026-02-01", "group": "Children", "category": "School / College Expenses", "amount": 650, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-233", "sector": "personal", "date": "2026-09-01", "group": "Children", "category": "School / College Expenses", "amount": 250, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-234", "sector": "personal", "date": "2026-01-01", "group": "Children", "category": "Gifts", "amount": 200, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}, {"id": "exp-235", "sector": "personal", "date": "2025-11-01", "group": "Children", "category": "Other", "amount": 1000, "currency": "ILS", "notes": "", "owner": "", "recurringId": ""}], "paymentRecords": [], "recurringExpenses": [], "settings": {"ilsPerUsd": 3.5}}</script>
-<script src="app.js?v=2"></script>
+  <section class="villa-band photo-panel blend-bottom" style="min-height:80vh;padding-top:90px;">
+    <img src="https://lh3.googleusercontent.com/d/1sPS2xvK6ZLXRsnrvhDit-BUWZl9_ZtMf=w1920" alt="" onerror="this.remove();">
+    <div class="photo-scrim light"></div>
+    <div class="wrap">
+      <div class="villa-copy">
+        <div class="inner">
+          <div class="roman">Estate I</div>
+          <h3>Villa Elu</h3>
+          <p class="lead">Wake to the horizon from an infinity pool that seems to spill into the Pacific.</p>
+          <div class="villa-meta">
+            <span>8 guests</span><span>4 bed</span><span>4.5 bath</span><span>Private pool</span>
+          </div>
+          <p>An architectural retreat where indoors and outdoors dissolve into one another. Full housekeeping, a dedicated concierge, and round-the-clock security are included for every stay.</p>
+          <a class="btn btn-line" href="javascript:void(0)" onclick="showTab('rates')">See rates for Elu</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="rule">
+    <div class="wrap">
+      <div class="section-head fade">
+        <div class="eyebrow" style="justify-content:center;">In pictures</div>
+        <h2>Villa Elu, <em>in detail</em></h2>
+        <p>A closer look at every space, indoors and out</p>
+      </div>
+      <div class="gallery-grid fade">
+        <a href="https://lh3.googleusercontent.com/d/1_OpcJcFP2WMbf-tRKOn0uP1Sjbj-85IO=w1600" target="_blank"><img src="https://lh3.googleusercontent.com/d/1_OpcJcFP2WMbf-tRKOn0uP1Sjbj-85IO=w1200" alt="" onerror="this.closest('a').remove();"></a>
+        <a href="https://lh3.googleusercontent.com/d/1RjbqksVX_jw6cOJkRXlndphHaVdq9Wjb=w1600" target="_blank"><img src="https://lh3.googleusercontent.com/d/1RjbqksVX_jw6cOJkRXlndphHaVdq9Wjb=w1200" alt="" onerror="this.closest('a').remove();"></a>
+        <a href="https://lh3.googleusercontent.com/d/1-mG19VYv1kuBTM5giQ6XxhfNupR7v-ba=w1600" target="_blank"><img src="https://lh3.googleusercontent.com/d/1-mG19VYv1kuBTM5giQ6XxhfNupR7v-ba=w1200" alt="" onerror="this.closest('a').remove();"></a>
+        <a href="https://lh3.googleusercontent.com/d/1HiA_LQv8FcQQL-RnWXfGohQxy45YxKG5=w1600" target="_blank"><img src="https://lh3.googleusercontent.com/d/1HiA_LQv8FcQQL-RnWXfGohQxy45YxKG5=w1200" alt="" onerror="this.closest('a').remove();"></a>
+        <a href="https://lh3.googleusercontent.com/d/1YZHpMmp-fPs7gpYe-puRoQ7x7TaYMrei=w1600" target="_blank"><img src="https://lh3.googleusercontent.com/d/1YZHpMmp-fPs7gpYe-puRoQ7x7TaYMrei=w1200" alt="" onerror="this.closest('a').remove();"></a>
+        <a href="https://lh3.googleusercontent.com/d/1Y3gy2sYWpSW0o8WLp9-txpEvh9qgZMfX=w1600" target="_blank"><img src="https://lh3.googleusercontent.com/d/1Y3gy2sYWpSW0o8WLp9-txpEvh9qgZMfX=w1200" alt="" onerror="this.closest('a').remove();"></a>
+        <a href="https://lh3.googleusercontent.com/d/1dGQHrqnF2wyh3NYL8uvPcStV-mqh-5i3=w1600" target="_blank"><img src="https://lh3.googleusercontent.com/d/1dGQHrqnF2wyh3NYL8uvPcStV-mqh-5i3=w1200" alt="" onerror="this.closest('a').remove();"></a>
+        <a href="https://lh3.googleusercontent.com/d/1Ggdz7scKBauG67__OJyQ5qtv1_6R2QIn=w1600" target="_blank"><img src="https://lh3.googleusercontent.com/d/1Ggdz7scKBauG67__OJyQ5qtv1_6R2QIn=w1200" alt="" onerror="this.closest('a').remove();"></a>
+        <a href="https://lh3.googleusercontent.com/d/1caKI7HYJXLdp40dMo31NLdLLI-uDR-Mx=w1600" target="_blank"><img src="https://lh3.googleusercontent.com/d/1caKI7HYJXLdp40dMo31NLdLLI-uDR-Mx=w1200" alt="" onerror="this.closest('a').remove();"></a>
+        <a href="https://lh3.googleusercontent.com/d/1UnJSTCsjsxvKBEqmb1d0ATo0mz1H73dq=w1600" target="_blank"><img src="https://lh3.googleusercontent.com/d/1UnJSTCsjsxvKBEqmb1d0ATo0mz1H73dq=w1200" alt="" onerror="this.closest('a').remove();"></a>
+        <a href="https://lh3.googleusercontent.com/d/1p2eizhVYEHBIvt6OYTvpNSmsaCox5LTB=w1600" target="_blank"><img src="https://lh3.googleusercontent.com/d/1p2eizhVYEHBIvt6OYTvpNSmsaCox5LTB=w1200" alt="" onerror="this.closest('a').remove();"></a>
+        <a href="https://lh3.googleusercontent.com/d/10wd5aZvbBH1w2opsBfNY4qVWqa78zRVN=w1600" target="_blank"><img src="https://lh3.googleusercontent.com/d/10wd5aZvbBH1w2opsBfNY4qVWqa78zRVN=w1200" alt="" onerror="this.closest('a').remove();"></a>
+        <a href="https://lh3.googleusercontent.com/d/1gsljj9wGAR0Tl5YciUv3oRu0BGRIlqaE=w1600" target="_blank"><img src="https://lh3.googleusercontent.com/d/1gsljj9wGAR0Tl5YciUv3oRu0BGRIlqaE=w1200" alt="" onerror="this.closest('a').remove();"></a>
+        <a href="https://lh3.googleusercontent.com/d/14jrWXEF7W2YGsSQlsWmNL-Nnw-iFfjyy=w1600" target="_blank"><img src="https://lh3.googleusercontent.com/d/14jrWXEF7W2YGsSQlsWmNL-Nnw-iFfjyy=w1200" alt="" onerror="this.closest('a').remove();"></a>
+        <a href="https://lh3.googleusercontent.com/d/1LbNUgcZp4lVx6IAv9dp26tNM0jqGEaWT=w1600" target="_blank"><img src="https://lh3.googleusercontent.com/d/1LbNUgcZp4lVx6IAv9dp26tNM0jqGEaWT=w1200" alt="" onerror="this.closest('a').remove();"></a>
+        <a href="https://lh3.googleusercontent.com/d/1NGg6q-dWeUz4AIixi-8JPkL_fFdpaJeu=w1600" target="_blank"><img src="https://lh3.googleusercontent.com/d/1NGg6q-dWeUz4AIixi-8JPkL_fFdpaJeu=w1200" alt="" onerror="this.closest('a').remove();"></a>
+        <a href="https://lh3.googleusercontent.com/d/1k6amI-mG_gjSHKTLgu5h7oEyQ335Q8Ab=w1600" target="_blank"><img src="https://lh3.googleusercontent.com/d/1k6amI-mG_gjSHKTLgu5h7oEyQ335Q8Ab=w1200" alt="" onerror="this.closest('a').remove();"></a>
+        <a href="https://lh3.googleusercontent.com/d/11j08MPEgsfne2_0V5iGPvcw_U7FpqVT3=w1600" target="_blank"><img src="https://lh3.googleusercontent.com/d/11j08MPEgsfne2_0V5iGPvcw_U7FpqVT3=w1200" alt="" onerror="this.closest('a').remove();"></a>
+        <a href="https://lh3.googleusercontent.com/d/16CEIk5Tok5DRgPzCTvsU1TbggP2HjAY_=w1600" target="_blank"><img src="https://lh3.googleusercontent.com/d/16CEIk5Tok5DRgPzCTvsU1TbggP2HjAY_=w1200" alt="" onerror="this.closest('a').remove();"></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="rule">
+    <div class="wrap">
+      <div class="section-head fade">
+        <div class="eyebrow" style="justify-content:center;">In motion</div>
+        <h2>A walk through <em>Elu</em></h2>
+        <p>Guided tour and property clip</p>
+      </div>
+      <div class="video-grid fade">
+        <div class="video-tile"><iframe src="https://drive.google.com/file/d/1HYXZL9XaSgab8RfoK1Mzbi5cSRHnUIAC/preview" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe></div>
+        <div class="video-tile"><iframe src="https://drive.google.com/file/d/1IJtuawHxOttNhiJqTnExThZXc6P0GjkQ/preview" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe></div>
+      </div>
+      <div class="video-label">Guided tour · property clip</div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="brand" style="font-family:'Cormorant Garamond',serif;font-size:18px;letter-spacing:.16em;cursor:pointer;" onclick="showTab('home')">Playa Hermosa Estates</div>
+    Trade partners only · Playa Hermosa, Costa Rica
+  </footer>
+</div>
+
+<!-- ============ VILLA NALANI ============ -->
+<div class="tab-panel" id="tab-nalani">
+
+  <section class="villa-band photo-panel blend-bottom" style="min-height:80vh;padding-top:90px;">
+    <img src="https://lh3.googleusercontent.com/d/1MrcQsPjw0gtUMkXTPHxZDnH8Iw_sAdbs=w1920" alt="" onerror="this.remove();">
+    <div class="photo-scrim light"></div>
+    <div class="wrap">
+      <div class="villa-copy">
+        <div class="inner">
+          <div class="roman">Estate II</div>
+          <h3>Villa Nalani</h3>
+          <p class="lead">A lap pool that catches the first light, and a table long enough for everyone.</p>
+          <div class="villa-meta">
+            <span>11 guests</span><span>6 bed</span><span>6.5 bath</span><span>Lap pool</span>
+          </div>
+          <p>Designed for multi-generational travel, buyouts, and destination events. Pairs seamlessly with Villa Elu for a ten-bedroom exclusive-use property.</p>
+          <a class="btn btn-line" href="javascript:void(0)" onclick="showTab('rates')">See rates for Nalani</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="rule">
+    <div class="wrap">
+      <div class="section-head fade">
+        <div class="eyebrow" style="justify-content:center;">In pictures</div>
+        <h2>Villa Nalani, <em>in detail</em></h2>
+        <p>A closer look at every space, indoors and out</p>
+      </div>
+      <div class="gallery-grid fade">
+        <a href="https://lh3.googleusercontent.com/d/1CzthzrzHmAlDsm_hAmxPmh1tm0N3vy5t=w1600" target="_blank"><img src="https://lh3.googleusercontent.com/d/1CzthzrzHmAlDsm_hAmxPmh1tm0N3vy5t=w1200" alt="" onerror="this.closest('a').remove();"></a>
+        <a href="https://lh3.googleusercontent.com/d/16nc9Xk6wjzn--bJcNGe78BPECyDcugUs=w1600" target="_blank"><img src="https://lh3.googleusercontent.com/d/16nc9Xk6wjzn--bJcNGe78BPECyDcugUs=w1200" alt="" onerror="this.closest('a').remove();"></a>
+        <a href="https://lh3.googleusercontent.com/d/1ayVShUfe2-LylhYAHG3nW94ItMEVIeQv=w1600" target="_blank"><img src="https://lh3.googleusercontent.com/d/1ayVShUfe2-LylhYAHG3nW94ItMEVIeQv=w1200" alt="" onerror="this.closest('a').remove();"></a>
+        <a href="https://lh3.googleusercontent.com/d/13K7Fp9i8i3XSKbTHLB2ntoTkXpNRY9eh=w1600" target="_blank"><img src="https://lh3.googleusercontent.com/d/13K7Fp9i8i3XSKbTHLB2ntoTkXpNRY9eh=w1200" alt="" onerror="this.closest('a').remove();"></a>
+        <a href="https://lh3.googleusercontent.com/d/1C2CE52sIkv_dnF6gnWAQYbRxn-t9YFVF=w1600" target="_blank"><img src="https://lh3.googleusercontent.com/d/1C2CE52sIkv_dnF6gnWAQYbRxn-t9YFVF=w1200" alt="" onerror="this.closest('a').remove();"></a>
+        <a href="https://lh3.googleusercontent.com/d/1GEvxPp85PFZFRYEYqhwYk9JXlwELETks=w1600" target="_blank"><img src="https://lh3.googleusercontent.com/d/1GEvxPp85PFZFRYEYqhwYk9JXlwELETks=w1200" alt="" onerror="this.closest('a').remove();"></a>
+        <a href="https://lh3.googleusercontent.com/d/1N-3owo3hX8exL71UwHLc1n3xs3r9WTec=w1600" target="_blank"><img src="https://lh3.googleusercontent.com/d/1N-3owo3hX8exL71UwHLc1n3xs3r9WTec=w1200" alt="" onerror="this.closest('a').remove();"></a>
+        <a href="https://lh3.googleusercontent.com/d/1Zd6LRjD0CN2nsOyoGKtdoQpkAbwmN53o=w1600" target="_blank"><img src="https://lh3.googleusercontent.com/d/1Zd6LRjD0CN2nsOyoGKtdoQpkAbwmN53o=w1200" alt="" onerror="this.closest('a').remove();"></a>
+        <a href="https://lh3.googleusercontent.com/d/1cLcPhpet36kY0mLH9C5jxAtCW4pwU1PH=w1600" target="_blank"><img src="https://lh3.googleusercontent.com/d/1cLcPhpet36kY0mLH9C5jxAtCW4pwU1PH=w1200" alt="" onerror="this.closest('a').remove();"></a>
+        <a href="https://lh3.googleusercontent.com/d/1H8nhyLJ4o0sQxOK8ckCVDxg6Fa-r6a6t=w1600" target="_blank"><img src="https://lh3.googleusercontent.com/d/1H8nhyLJ4o0sQxOK8ckCVDxg6Fa-r6a6t=w1200" alt="" onerror="this.closest('a').remove();"></a>
+        <a href="https://lh3.googleusercontent.com/d/1fmrd3sPFf8WE3f_5IlnmB_L83NNO5p4M=w1600" target="_blank"><img src="https://lh3.googleusercontent.com/d/1fmrd3sPFf8WE3f_5IlnmB_L83NNO5p4M=w1200" alt="" onerror="this.closest('a').remove();"></a>
+        <a href="https://lh3.googleusercontent.com/d/1IeHttnp4pNe4_C4M546uriZGEbJ07GAw=w1600" target="_blank"><img src="https://lh3.googleusercontent.com/d/1IeHttnp4pNe4_C4M546uriZGEbJ07GAw=w1200" alt="" onerror="this.closest('a').remove();"></a>
+        <a href="https://lh3.googleusercontent.com/d/1QBiLr248QeiRLMBLS51ycsBXuKF7BiqK=w1600" target="_blank"><img src="https://lh3.googleusercontent.com/d/1QBiLr248QeiRLMBLS51ycsBXuKF7BiqK=w1200" alt="" onerror="this.closest('a').remove();"></a>
+        <a href="https://lh3.googleusercontent.com/d/1iUqVa2kn8jidvI8YtxgQd6FioLx0fYGU=w1600" target="_blank"><img src="https://lh3.googleusercontent.com/d/1iUqVa2kn8jidvI8YtxgQd6FioLx0fYGU=w1200" alt="" onerror="this.closest('a').remove();"></a>
+        <a href="https://lh3.googleusercontent.com/d/1H6BBdo6iWTf7J3W5wtkYAA6nv7LzbEZE=w1600" target="_blank"><img src="https://lh3.googleusercontent.com/d/1H6BBdo6iWTf7J3W5wtkYAA6nv7LzbEZE=w1200" alt="" onerror="this.closest('a').remove();"></a>
+        <a href="https://lh3.googleusercontent.com/d/1M0gRDcXg-uRB9U8G3JJ5SSysyrMAhFhU=w1600" target="_blank"><img src="https://lh3.googleusercontent.com/d/1M0gRDcXg-uRB9U8G3JJ5SSysyrMAhFhU=w1200" alt="" onerror="this.closest('a').remove();"></a>
+        <a href="https://lh3.googleusercontent.com/d/1-lMwPEs40L60egZTatefMAZ0faIhb6Ej=w1600" target="_blank"><img src="https://lh3.googleusercontent.com/d/1-lMwPEs40L60egZTatefMAZ0faIhb6Ej=w1200" alt="" onerror="this.closest('a').remove();"></a>
+        <a href="https://lh3.googleusercontent.com/d/1CGpKOc5fehRYPM6063497sSiI_vHBr1O=w1600" target="_blank"><img src="https://lh3.googleusercontent.com/d/1CGpKOc5fehRYPM6063497sSiI_vHBr1O=w1200" alt="" onerror="this.closest('a').remove();"></a>
+        <a href="https://lh3.googleusercontent.com/d/1bvs6Uh2SSPuKBM8IREj01xGoaOjNGWVy=w1600" target="_blank"><img src="https://lh3.googleusercontent.com/d/1bvs6Uh2SSPuKBM8IREj01xGoaOjNGWVy=w1200" alt="" onerror="this.closest('a').remove();"></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="rule">
+    <div class="wrap">
+      <div class="section-head fade">
+        <div class="eyebrow" style="justify-content:center;">In motion</div>
+        <h2>A walk through <em>Nalani</em></h2>
+        <p>Full property walkthrough</p>
+      </div>
+      <div class="video-grid fade" style="grid-template-columns:1fr;max-width:820px;margin:0 auto;">
+        <div class="video-tile"><iframe src="https://drive.google.com/file/d/1M7PEl8WUagzIjVd67cprDPgjQc1uQ774/preview" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe></div>
+      </div>
+      <div class="video-label">Property walkthrough</div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="brand" style="font-family:'Cormorant Garamond',serif;font-size:18px;letter-spacing:.16em;cursor:pointer;" onclick="showTab('home')">Playa Hermosa Estates</div>
+    Trade partners only · Playa Hermosa, Costa Rica
+  </footer>
+</div>
+
+<!-- ============ RATES ============ -->
+<div class="tab-panel" id="tab-rates">
+  <section class="rule" style="padding-top:180px;">
+    <div class="wrap">
+      <div class="section-head fade">
+        <div class="eyebrow" style="justify-content:center;">2026 / 2027 season</div>
+        <h2>Rates &amp; <em>reservation policy</em></h2>
+        <p>All rates in USD per night, exclusive of 13% sales tax</p>
+      </div>
+      <table class="rates fade">
+        <tr>
+          <th>Accommodation</th>
+          <th>Green season</th>
+          <th>High season</th>
+          <th>Holiday period</th>
+          <th>Festive dates</th>
+        </tr>
+        <tr>
+          <td class="name">Villa Elu<span>4 bed · up to 8 guests</span></td>
+          <td class="price">$2,500</td><td class="price">$2,800</td><td class="price">$3,000</td><td class="price">$8,000</td>
+        </tr>
+        <tr>
+          <td class="name">Villa Nalani<span>6 bed · up to 11 guests</span></td>
+          <td class="price">$2,800</td><td class="price">$3,600</td><td class="price">$4,000</td><td class="price">$12,000</td>
+        </tr>
+        <tr>
+          <td class="name">Entire estate<span>10 bed · both villas</span></td>
+          <td class="price">$5,000</td><td class="price">$6,000</td><td class="price">$6,500</td><td class="price">$20,000</td>
+        </tr>
+        <tr>
+          <td class="name" style="font-family:'Jost',sans-serif;font-size:13px;color:var(--muted);font-weight:500;">Minimum stay</td>
+          <td style="font-size:13px;color:var(--muted);font-weight:500;">3 nights</td>
+          <td style="font-size:13px;color:var(--muted);font-weight:500;">5 nights</td>
+          <td style="font-size:13px;color:var(--muted);font-weight:500;">7 nights</td>
+          <td style="font-size:13px;color:var(--muted);font-weight:500;">10 nights</td>
+        </tr>
+      </table>
+      <div style="text-align:center;margin-top:50px;">
+        <a class="btn btn-dark" href="javascript:void(0)" onclick="showTab('contact')">Request a quote for your client</a>
+      </div>
+
+      <div class="policy-grid fade">
+        <div class="policy-card">
+          <h4>Reservation &amp; payment</h4>
+          <p>A <strong>50% deposit</strong> is required to confirm the reservation.</p>
+          <p>The remaining balance is due:</p>
+          <ul>
+            <li><span>Prior to arrival · standard</span><b>60 days</b></li>
+            <li><span>Prior to arrival · festive dates</span><b>120 days</b></li>
+          </ul>
+        </div>
+        <div class="policy-card">
+          <h4>Cancellation policy</h4>
+          <p>Cancellations are accepted up to:</p>
+          <ul>
+            <li><span>Prior · green season</span><b>30 days</b></li>
+            <li><span>Prior · high season</span><b>60 days</b></li>
+            <li><span>Prior · festive dates</span><b>90 days</b></li>
+          </ul>
+        </div>
+        <div class="policy-card">
+          <h4>Credits &amp; adjustments</h4>
+          <p>For cancellations or adjustments made after full payment, a <strong>credit valid for one year</strong> will be issued.</p>
+          <p>Credits are not applicable to festive-date bookings.</p>
+        </div>
+        <div class="policy-card">
+          <h4>General notes</h4>
+          <ul>
+            <li><span>All rates are quoted in</span><b>USD / night</b></li>
+            <li><span>Rates are exclusive of sales tax</span><b>13%</b></li>
+          </ul>
+          <p style="margin-top:14px;">The owner reserves the right to adjust rates at their discretion.</p>
+        </div>
+      </div>
+      <div class="policy-foot fade">All rates are quoted in USD per night and are exclusive of 13% sales tax.</div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="brand" style="font-family:'Cormorant Garamond',serif;font-size:18px;letter-spacing:.16em;cursor:pointer;" onclick="showTab('home')">Playa Hermosa Estates</div>
+    Trade partners only · Playa Hermosa, Costa Rica
+  </footer>
+</div>
+
+<!-- ============ REVIEWS ============ -->
+<div class="tab-panel" id="tab-reviews">
+  <section class="rule" style="padding-top:180px;">
+    <div class="wrap">
+      <div class="section-head fade">
+        <div class="eyebrow" style="justify-content:center;">Guest reviews</div>
+        <h2>In their <em>own words</em></h2>
+      </div>
+      <div class="rating-hero fade">
+        <div class="score">5.0<small>/ 5</small></div>
+        <div class="stars">★★★★★</div>
+        <div class="cap">Average guest rating</div>
+      </div>
+      <div class="review-lead fade">
+        <p class="quote">&ldquo;Truly the nicest house I've ever stayed in on all levels. The place was gorgeous. View was beautiful. We had a company off-site here and the team was blown away.&rdquo;</p>
+        <div class="who">Koby · Group trip · July 2025</div>
+      </div>
+      <div class="review-grid fade">
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p>&ldquo;Our stay in Costa Rica was absolutely amazing! The house was beautiful, comfortable, and exceeded all of our expectations.&rdquo;</p>
+          <div class="who"><b>Aerika</b>Dallas, Texas · August 2026</div>
+        </div>
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p>&ldquo;The photos don't do it justice.&rdquo;</p>
+          <div class="who"><b>Chase</b>Group trip · March 2026</div>
+        </div>
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p>&ldquo;Been coming to ST for quite a few years now and love staying in the Hermosa area. This villa is beautiful and the location is incredible, tough to beat.&rdquo;</p>
+          <div class="who"><b>Jonathan</b>Chicago, Illinois · February 2026</div>
+        </div>
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p>&ldquo;Great villa, Diana is incredible, everything was great.&rdquo;</p>
+          <div class="who"><b>Mariana</b>February 2026</div>
+        </div>
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p>&ldquo;One of the best properties in the area. Truly magical. And the team that manages it all is A+.&rdquo;</p>
+          <div class="who"><b>Yasmine</b>Bexley, Ohio · November 2025</div>
+        </div>
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p>&ldquo;We were blown away by our stay at Magna Pacific! It was the most perfect place to relax and unwind.&rdquo;</p>
+          <div class="who"><b>Rachel</b>May 2025</div>
+        </div>
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p>&ldquo;Beautiful home! Great location. Daiana our host was amazing as well, A+++&rdquo;</p>
+          <div class="who"><b>Kelly</b>Los Angeles, California · November 2024</div>
+        </div>
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p>&ldquo;This home was surreal. Absolutely stunning. Interior is exceptional. 10/10 recommend. My family and I enjoyed our stay. Thank you!&rdquo;</p>
+          <div class="who"><b>Rudy</b>Stayed with family · March 2024</div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:70px;">
+        <a class="btn btn-dark" href="javascript:void(0)" onclick="showTab('contact')">Enquire for your client</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="brand" style="font-family:'Cormorant Garamond',serif;font-size:18px;letter-spacing:.16em;cursor:pointer;" onclick="showTab('home')">Playa Hermosa Estates</div>
+    Trade partners only · Playa Hermosa, Costa Rica
+  </footer>
+</div>
+
+<!-- ============ CONTACT ============ -->
+<div class="tab-panel" id="tab-contact">
+  <section class="rule" style="padding-top:180px;">
+    <div class="wrap">
+      <div class="section-head fade">
+        <div class="eyebrow" style="justify-content:center;">Trade enquiries</div>
+        <h2>Request a quote <em>for your client</em></h2>
+        <p>Reserved for travel agencies, tour operators and travel advisors.</p>
+      </div>
+      <form class="form-wrap fade" id="tradeForm" novalidate>
+        <div class="form-row">
+          <div><label for="f-agency">Agency / company *</label><input id="f-agency" type="text" autocomplete="organization" required></div>
+          <div><label for="f-name">Your name *</label><input id="f-name" type="text" autocomplete="name" required></div>
+        </div>
+        <div class="form-row">
+          <div><label for="f-email">Business email *</label><input id="f-email" type="email" autocomplete="email" placeholder="you@youragency.com" required></div>
+          <div><label for="f-web">Agency website or IATA / licence no. *</label><input id="f-web" type="text" required></div>
+        </div>
+        <div class="form-row">
+          <div><label for="f-phone">Phone</label><input id="f-phone" type="tel" autocomplete="tel"></div>
+          <div><label for="f-villa">Villa</label>
+            <select id="f-villa">
+              <option>Villa Elu</option>
+              <option>Villa Nalani</option>
+              <option>Entire estate</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div><label for="f-in">Check-in</label><input id="f-in" type="date"></div>
+          <div><label for="f-out">Check-out</label><input id="f-out" type="date"></div>
+        </div>
+        <div class="form-row">
+          <div><label for="f-guests">Guests</label><input id="f-guests" type="number" min="1" max="19"></div>
+          <div></div>
+        </div>
+        <div class="form-row full">
+          <div><label for="f-notes">Notes for your client's stay</label><textarea id="f-notes"></textarea></div>
+        </div>
+        <div class="form-row full" style="margin-bottom:10px;">
+          <label class="trade-check"><input type="checkbox" id="f-trade"> I confirm I am enquiring on behalf of a travel agency or tour operator, not as a private guest.</label>
+        </div>
+        <button class="form-submit" type="submit" id="f-send" disabled>Compose email to reservations</button>
+        <div class="form-error" id="f-err" role="alert"></div>
+        <div class="form-note">Submitting opens your email client with the request pre-filled, addressed to our reservations desk. Private guests are kindly asked to book through their travel advisor.</div>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="brand" style="font-family:'Cormorant Garamond',serif;font-size:18px;letter-spacing:.16em;cursor:pointer;" onclick="showTab('home')">Playa Hermosa Estates</div>
+    Trade partners only · Playa Hermosa, Costa Rica
+  </footer>
+</div>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+  <button class="lightbox-nav lightbox-prev" onclick="stepLightbox(-1)">&#8249;</button>
+  <img id="lightbox-img" src="" alt="">
+  <button class="lightbox-nav lightbox-next" onclick="stepLightbox(1)">&#8250;</button>
+  <div class="lightbox-count" id="lightbox-count"></div>
+</div>
+
+<script>
+var lbUrls = [], lbIndex = 0;
+function openLightbox(urls, idx){
+  lbUrls = urls; lbIndex = idx;
+  document.getElementById('lightbox-img').src = lbUrls[lbIndex];
+  document.getElementById('lightbox-count').textContent = (lbIndex+1) + ' / ' + lbUrls.length;
+  document.getElementById('lightbox').classList.add('open');
+}
+function closeLightbox(){
+  document.getElementById('lightbox').classList.remove('open');
+}
+function stepLightbox(dir){
+  lbIndex = (lbIndex + dir + lbUrls.length) % lbUrls.length;
+  document.getElementById('lightbox-img').src = lbUrls[lbIndex];
+  document.getElementById('lightbox-count').textContent = (lbIndex+1) + ' / ' + lbUrls.length;
+}
+document.getElementById('lightbox').addEventListener('click', function(e){
+  if(e.target.id === 'lightbox') closeLightbox();
+});
+window.addEventListener('keydown', function(e){
+  if(!document.getElementById('lightbox').classList.contains('open')) return;
+  if(e.key === 'Escape') closeLightbox();
+  if(e.key === 'ArrowRight') stepLightbox(1);
+  if(e.key === 'ArrowLeft') stepLightbox(-1);
+});
+document.querySelectorAll('.gallery-grid').forEach(function(grid){
+  var links = Array.prototype.slice.call(grid.querySelectorAll('a'));
+  var urls = links.map(function(l){ return l.getAttribute('href'); });
+  links.forEach(function(a, i){
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      openLightbox(urls, i);
+    });
+  });
+});
+
+/* ---- trade-only enquiry: address is assembled at click time, never shown on the page ---- */
+(function(){
+  var FREE = ['gmail.com','googlemail.com','yahoo.com','yahoo.co.uk','hotmail.com','outlook.com','live.com','msn.com','icloud.com','me.com','mac.com','aol.com','proton.me','protonmail.com','gmx.com','gmx.net','mail.com','yandex.com','zoho.com','walla.co.il','hotmail.co.il'];
+  var f = document.getElementById('tradeForm');
+  var btn = document.getElementById('f-send'), err = document.getElementById('f-err');
+  function v(id){ return (document.getElementById(id).value||'').trim(); }
+  function sync(){ btn.disabled = !document.getElementById('f-trade').checked; }
+  document.getElementById('f-trade').addEventListener('change', sync); sync();
+  f.addEventListener('submit', function(e){
+    e.preventDefault(); err.textContent = '';
+    if(!document.getElementById('f-trade').checked){ err.textContent = 'This form is reserved for travel trade partners.'; return; }
+    var agency=v('f-agency'), name=v('f-name'), email=v('f-email'), web=v('f-web');
+    if(!agency || !name || !email || !web){ err.textContent = 'Please complete all fields marked *.'; return; }
+    var m = /^[^\s@]+@([^\s@]+\.[^\s@]+)$/.exec(email);
+    if(!m){ err.textContent = 'Please enter a valid email address.'; return; }
+    if(FREE.indexOf(m[1].toLowerCase()) !== -1){ err.textContent = 'Please use your agency or company email address — personal email domains are not accepted for trade enquiries.'; return; }
+    var lines = [
+      'Agency / company: '+agency, 'Contact: '+name, 'Email: '+email, 'Website / IATA / licence: '+web,
+      'Phone: '+(v('f-phone')||'-'), '', 'Villa: '+v('f-villa'),
+      'Check-in: '+(v('f-in')||'-'), 'Check-out: '+(v('f-out')||'-'), 'Guests: '+(v('f-guests')||'-'), '',
+      'Notes:', v('f-notes')||'-'
+    ];
+    var to = ['magnapacific','reservations'].join('') + '@' + ['gmail','com'].join('.');
+    var subj = 'Trade enquiry - ' + agency + ' - ' + v('f-villa') + (v('f-in') ? ' - ' + v('f-in') : '');
+    window.location.href = 'mailto:' + to + '?subject=' + encodeURIComponent(subj) + '&body=' + encodeURIComponent(lines.join('\n'));
+  });
+})();
+
+function showTab(id){
+  document.querySelectorAll('.tab-panel').forEach(function(p){ p.classList.remove('active'); });
+  var panel = document.getElementById('tab-'+id);
+  if(panel) panel.classList.add('active');
+  document.querySelectorAll('.navlinks button').forEach(function(b){
+    b.classList.toggle('active', b.getAttribute('data-tab') === id);
+  });
+  window.scrollTo({top:0, behavior:'instant'});
+  currentTab = id; syncNav();
+  history.replaceState(null, '', '#'+id);
+  setTimeout(function(){
+    if(panel){
+      panel.querySelectorAll('.fade').forEach(function(el){ el.classList.add('in'); });
+    }
+  }, 60);
+}
+var currentTab = 'home';
+function syncNav(){
+  var photoTop = ['home','elu','nalani'].indexOf(currentTab) !== -1;
+  document.getElementById('nav').classList.toggle('scrolled', !photoTop || window.scrollY > 60);
+}
+window.addEventListener('scroll', syncNav);
+(function(){
+  var startTab = 'home';
+  var hash = location.hash.replace('#','');
+  if(hash && document.getElementById('tab-'+hash)) startTab = hash;
+  showTab(startTab);
+})();
+</script>
+
 </body>
 </html>
