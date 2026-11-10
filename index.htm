@@ -236,6 +236,34 @@
     table.rates th,table.rates td{padding:16px 8px;}
     table.rates td.price{font-size:21px;}
   }
+
+  /* ---- mobile: keep the fixed header from covering the first screen ---- */
+  @media(max-width:900px){
+    nav{padding:14px 0 10px;}
+    nav.scrolled{padding:12px 0 8px;}
+    nav:not(.scrolled){background:linear-gradient(180deg, rgba(18,15,8,.55), rgba(18,15,8,0));}
+    nav .wrap{justify-content:center;row-gap:8px;}
+    .brand{font-size:15px;letter-spacing:.18em;white-space:nowrap;}
+    .navlinks{justify-content:flex-start;gap:22px;}
+    .hero{min-height:100svh;align-items:flex-start;padding:150px 0 90px;}
+    .hero-frame{inset:12px;}
+    .hero .eyebrow{margin-bottom:20px;letter-spacing:.26em;font-size:9.5px;}
+    .hero h1{font-size:clamp(34px,9vw,44px);margin-bottom:20px;}
+    .hero p{font-size:18px;}
+    .hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:22px 0;margin:28px 0 34px;}
+    .hero-stats div{border-right:none;padding:0 8px;}
+    .hero-stats b{font-size:26px;}
+    .scroll-cue{display:none;}
+    .villa-band{min-height:auto !important;padding-top:150px !important;}
+    .villa-copy{padding:0 0 70px;}
+    .villa-copy h3{font-size:clamp(38px,11vw,50px);}
+    .villa-copy p.lead{font-size:20px;}
+    .villa-copy p{font-size:15px;}
+    .tab-panel > section.rule:first-child{padding-top:150px !important;}
+    table.rates{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;white-space:nowrap;}
+    table.rates td.name span{white-space:normal;}
+    html,body{overflow-x:hidden;}
+  }
 </style>
 </head>
 <body>
